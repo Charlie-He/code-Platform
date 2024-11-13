@@ -466,7 +466,7 @@ public class ArticleDao extends ServiceImpl<ArticleMapper, ArticleDO> {
                 .count();
     }
 
-    public List<ArticleDO> selectByIds(List<Integer> ids) {
+    public List<ArticleDO> selectByIds(List<Long> ids) {
 
         List<ArticleDO> articleDOS = baseMapper.selectBatchIds(ids);
         return articleDOS;

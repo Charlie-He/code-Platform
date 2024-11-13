@@ -1,5 +1,6 @@
 package com.github.paicoding.forum.service.article.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.paicoding.forum.api.model.enums.*;
@@ -13,7 +14,9 @@ import com.github.paicoding.forum.api.model.vo.article.dto.SimpleArticleDTO;
 import com.github.paicoding.forum.api.model.vo.article.dto.TagDTO;
 import com.github.paicoding.forum.api.model.vo.constants.StatusEnum;
 import com.github.paicoding.forum.api.model.vo.user.dto.BaseUserInfoDTO;
+import com.github.paicoding.forum.core.common.RedisConstants;
 import com.github.paicoding.forum.core.util.ArticleUtil;
+import com.github.paicoding.forum.core.util.JsonUtil;
 import com.github.paicoding.forum.core.util.SpringUtil;
 import com.github.paicoding.forum.service.article.cache.ArticleCacheManager;
 import com.github.paicoding.forum.service.article.conveter.ArticleConverter;
@@ -28,25 +31,32 @@ import com.github.paicoding.forum.service.statistics.service.CountService;
 import com.github.paicoding.forum.service.user.repository.entity.UserFootDO;
 import com.github.paicoding.forum.service.user.service.UserFootService;
 import com.github.paicoding.forum.service.user.service.UserService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.index.query.MultiMatchQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -59,6 +69,11 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class ArticleReadServiceImpl implements ArticleReadService {
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Resource
+    private RedissonClient redissonClient;
 
     @Autowired
     private ArticleDao articleDao;
@@ -89,8 +104,7 @@ public class ArticleReadServiceImpl implements ArticleReadService {
     private ArticleCacheManager articleCacheManager;
 
     // 是否开启ES
-    @Value("${elasticsearch.open:false}")
-    private Boolean openES;
+    private Boolean openES=true;
 
     @Override
     public ArticleDO queryBasicArticle(Long articleId) {
@@ -132,13 +146,34 @@ public class ArticleReadServiceImpl implements ArticleReadService {
      */
     @Override
     public ArticleDTO queryFullArticleInfo(Long articleId, Long readUser) {
-        ArticleDTO article;
-
-        article = articleCacheManager.getArticleInfo(articleId);
-
-        if(article == null){
-            article = queryDetailArticleInfo(articleId);
-            articleCacheManager.setArticleInfo(articleId, article);
+        ArticleDTO article=null;
+        String redisCacheKey= RedisConstants.REDIS_PRE_ARTICLE+RedisConstants.REDIS_CACHE+articleId;
+        String articleStr = stringRedisTemplate.opsForValue().get(redisCacheKey);
+        if(StrUtil.isNotBlank(articleStr)){
+            //如果命中缓存，直接返回
+            article= JsonUtil.toObj(articleStr, ArticleDTO.class);
+        }else{
+            //如果未命中，则访问数据库并更新缓存
+            String redisLockKey=RedisConstants.REDIS_LOCK+RedisConstants.REDIS_PRE_ARTICLE+articleId;
+            //指定锁的名称
+            RLock lock = redissonClient.getLock(redisLockKey);
+            try {
+                if(lock.tryLock(3,30, TimeUnit.SECONDS)){
+                    article=queryDetailArticleInfo(articleId);
+                }else{
+                    //获取锁失败，休眠一段时间查缓存
+                    Thread.sleep(200);
+                    this.queryFullArticleInfo(articleId,readUser);
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } finally {
+                //释放锁，并判断该锁是不是自己的
+                if(lock.isLocked()&&lock.isHeldByCurrentThread())
+                    lock.unlock();
+            }
+            //更新缓存
+            stringRedisTemplate.opsForValue().set(redisCacheKey,JsonUtil.toStr(article),1,TimeUnit.HOURS);
         }
 
         // 文章阅读计数+1
@@ -284,25 +319,25 @@ public class ArticleReadServiceImpl implements ArticleReadService {
                     .collect(Collectors.toList());
         }
         // TODO ES整合
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        MultiMatchQueryBuilder multiMatchQueryBuilder = QueryBuilders.multiMatchQuery(key,
+        //创建request
+        SearchRequest request = new SearchRequest("article");
+        //组织请求参数
+        request.source().query(QueryBuilders.multiMatchQuery(key,
                 EsFieldConstant.ES_FIELD_TITLE,
-                EsFieldConstant.ES_FIELD_SHORT_TITLE);
-        searchSourceBuilder.query(multiMatchQueryBuilder);
-
-        SearchRequest searchRequest = new SearchRequest(new String[]{EsIndexConstant.ES_INDEX_ARTICLE},
-                searchSourceBuilder);
+                EsFieldConstant.ES_FIELD_SHORT_TITLE));
         SearchResponse searchResponse = null;
         try {
-            searchResponse = SpringUtil.getBean(RestHighLevelClient.class).search(searchRequest, RequestOptions.DEFAULT);
+            //发送请求
+            searchResponse = SpringUtil.getBean(RestHighLevelClient.class).search(request, RequestOptions.DEFAULT);
         } catch (IOException e) {
             log.error("failed to query from es: key", e);
         }
+        //解析响应
         SearchHits hits = searchResponse.getHits();
         SearchHit[] hitsList = hits.getHits();
-        List<Integer> ids = new ArrayList<>();
+        List<Long> ids = new ArrayList<>();
         for (SearchHit documentFields : hitsList) {
-            ids.add(Integer.parseInt(documentFields.getId()));
+            ids.add(Long.parseLong(documentFields.getId()));
         }
         if (ObjectUtils.isEmpty(ids)) {
             return null;
