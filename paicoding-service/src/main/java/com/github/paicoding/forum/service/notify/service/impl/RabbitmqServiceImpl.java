@@ -65,12 +65,12 @@ public class RabbitmqServiceImpl implements RabbitmqService {
     }
 
     public <T> void publishDirectMsg(MessageQueueEvent<T> messageQueueEvent, String key, boolean isPersist) {
-        //用于存储消息的属性
-        MessageProperties messageProperties = new MessageProperties();
-        messageProperties.setDeliveryMode(isPersist? MessageDeliveryMode.PERSISTENT: MessageDeliveryMode.NON_PERSISTENT);
-
-        Message message = rabbitTemplate.getMessageConverter().toMessage(messageQueueEvent, messageProperties);
-        rabbitTemplate.convertAndSend(CommonConstants.MESSAGE_QUEUE_EXCHANGE_NAME_DIRECT, key, message);
+//        //用于存储消息的属性
+//        MessageProperties messageProperties = new MessageProperties();
+//        messageProperties.setDeliveryMode(isPersist? MessageDeliveryMode.PERSISTENT: MessageDeliveryMode.NON_PERSISTENT);
+//
+//        Message message = rabbitTemplate.getMessageConverter().toMessage(messageQueueEvent, messageProperties);
+        rabbitTemplate.convertAndSend(CommonConstants.MESSAGE_QUEUE_EXCHANGE_NAME_DIRECT, key, messageQueueEvent);
     }
     @Override
     public <T> void publishFanoutMsg(MessageQueueEvent<T> messageQueueEvent) {

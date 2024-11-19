@@ -1,5 +1,6 @@
 package com.github.paicoding.forum.api.model.event;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.paicoding.forum.api.model.enums.NotifyTypeEnum;
 import lombok.*;
 
@@ -14,6 +15,7 @@ import lombok.*;
 @Setter
 @ToString
 @NoArgsConstructor
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "@class")
 public class MessageQueueEvent<T> {
     private NotifyTypeEnum notifyType;
 

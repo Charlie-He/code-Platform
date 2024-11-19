@@ -66,4 +66,5 @@ public interface ChatService {
      */
     ChatRecordsVo getChatHistory(Long user, AISourceEnum aiSource);
 
+
 }

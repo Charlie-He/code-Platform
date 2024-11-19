@@ -26,9 +26,9 @@ chatgpt:
   conf:
     CHAT_GPT_3_5:
       keys:
-        -
+        -sk-gp3ZovpG6HV6j290mRoYt2qrxsncZ6LLcTOlDmqEV6WN5ji3
       proxy: true # 表示走上面的代理进行访问
-      apiHost: https://api.openai.com/
+      apiHost: https://api.chatanywhere.tech/v1
       timeOut: 900
       maxToken: 3000
     CHAT_GPT_4:

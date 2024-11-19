@@ -104,7 +104,8 @@ public class ArticleReadServiceImpl implements ArticleReadService {
     private ArticleCacheManager articleCacheManager;
 
     // 是否开启ES
-    private Boolean openES=true;
+    @Value("${elasticsearch.open}")
+    private Boolean openES;
 
     @Override
     public ArticleDO queryBasicArticle(Long articleId) {

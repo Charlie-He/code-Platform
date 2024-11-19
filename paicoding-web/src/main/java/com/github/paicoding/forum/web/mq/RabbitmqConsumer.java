@@ -2,9 +2,23 @@ package com.github.paicoding.forum.web.mq;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.paicoding.forum.api.model.context.ReqInfoContext;
+import com.github.paicoding.forum.api.model.enums.NotifyStatEnum;
+import com.github.paicoding.forum.api.model.enums.NotifyTypeEnum;
 import com.github.paicoding.forum.api.model.event.MessageQueueEvent;
+import com.github.paicoding.forum.api.model.vo.notify.NotifyMsgEvent;
+import com.github.paicoding.forum.core.cache.RedisClient;
 import com.github.paicoding.forum.core.common.CommonConstants;
+import com.github.paicoding.forum.service.comment.repository.entity.CommentDO;
+import com.github.paicoding.forum.service.notify.repository.entity.NotifyMsgDO;
+import com.github.paicoding.forum.service.rank.service.UserActivityRankService;
+import com.github.paicoding.forum.service.rank.service.model.ActivityScoreBo;
+import com.github.paicoding.forum.service.statistics.constants.CountConstants;
+import com.github.paicoding.forum.service.user.repository.entity.UserDO;
+import com.github.paicoding.forum.service.user.repository.entity.UserFootDO;
+import com.github.paicoding.forum.service.user.repository.entity.UserRelationDO;
 import com.github.paicoding.forum.web.mq.comsumer.MessageQueueNotifyMsgConsumer;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.Exchange;
@@ -31,19 +45,18 @@ public class RabbitmqConsumer {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
 
-//    @RabbitListener(bindings = @QueueBinding(
-//                value = @Queue(
-//                        name = CommonConstants.MESSAGE_QUEUE_NAME_NOTIFY_EVENT,//队列名称
-//                        durable = "true"//设置队列为持久化
-////                        arguments = @Argument(name = "x-queue-mode", value = "lazy")//懒队列模式，将消息存放在磁盘而不是内存中
-//                ),
-//                //指定交换机的名称及其类型
-//                exchange = @Exchange(name = CommonConstants.MESSAGE_QUEUE_EXCHANGE_NAME_DIRECT, type = ExchangeTypes.DIRECT),
-//                //指定绑定的路由键
-//                key = {CommonConstants.MESSAGE_QUEUE_KEY_NOTIFY}
-//            ),
-//            concurrency = "1-5"
-//    )
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue(
+                    name = CommonConstants.MESSAGE_QUEUE_NAME_NOTIFY_EVENT,
+                    durable = "true"
+//                        arguments = @Argument(name = "x-queue-mode", value = "lazy")
+            ),
+            exchange = @Exchange(name = CommonConstants.MESSAGE_QUEUE_EXCHANGE_NAME_DIRECT, type = ExchangeTypes.DIRECT),
+            key = {CommonConstants.MESSAGE_QUEUE_KEY_NOTIFY}
+    ),
+            concurrency = "1-5"
+    )
+    @SuppressWarnings("unchecked")
     public <T> void listenNotifyEventQueue(MessageQueueEvent<T> msgEvent) {
         log.info("消费者2接收到direct.queue2的消息：【{}】", msgEvent);
 
@@ -78,5 +91,4 @@ public class RabbitmqConsumer {
                 break;
         }
     }
-
 }

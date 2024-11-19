@@ -172,7 +172,6 @@ public class UserActivityRankServiceImpl implements UserActivityRankService {
     public List<RankItemDTO> queryRankList(ActivityRankTimeEnum time, int size) {
         String rankKey = time == ActivityRankTimeEnum.DAY ? todayRankKey() : monthRankKey();
         // 1. 获取topN的活跃用户
-//        List<ImmutablePair<String, Double>> rankList = RedisClient.zTopNScore(rankKey, size);
         Set<String> rankList = stringRedisTemplate.opsForZSet().reverseRange("pai_" + rankKey, 0, size - 1);
 
         if (CollectionUtils.isEmpty(rankList)) {
@@ -186,6 +185,7 @@ public class UserActivityRankServiceImpl implements UserActivityRankService {
         // 3. 根据评分进行排序
         List<RankItemDTO> rank = users.stream()
                 .map(user -> new RankItemDTO().setUser(user).setScore(userScoreMap.getOrDefault(user.getUserId(), 0)))
+                .sorted((r1,r2)->Integer.compare(r2.getScore(),r1.getScore()))
                 .collect(Collectors.toList());
         // 4. 补齐每个用户的排名
         IntStream.range(0, rank.size()).forEach(i -> rank.get(i).setRank(i + 1));

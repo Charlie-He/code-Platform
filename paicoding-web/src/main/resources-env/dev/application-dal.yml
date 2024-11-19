@@ -31,7 +31,7 @@ spring:
         password: he123456
   data:
     redis:
-      host: 192.168.78.130
+      host: 192.168.78.133
       port: 6379
       password: he123456
 #  redis:
@@ -45,7 +45,7 @@ elasticsearch:
   open: true
   # es集群名称
   clusterName: elasticsearch
-  hosts: 192.168.78.130:9200
+  hosts: 192.168.78.133:9200
   userName: elastic
   password: elastic
   # es 请求方式

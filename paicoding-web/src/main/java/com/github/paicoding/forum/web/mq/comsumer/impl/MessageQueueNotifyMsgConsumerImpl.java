@@ -94,6 +94,7 @@ public class MessageQueueNotifyMsgConsumerImpl implements MessageQueueNotifyMsgC
                 .setType(event.getNotifyType().getType())
                 .setState(NotifyStatEnum.UNREAD.getStat())
                 .setMsg("");
+        //查询之前是否有该消息，不能重复通知
         NotifyMsgDO record = notifyMsgDao.getByUserIdRelatedIdAndType(msg);
         if (record == null) {
             // 若之前已经有对应的通知，则不重复记录；因为一个用户对一篇文章，可以重复的点赞、取消点赞，但是最终我们只通知一次

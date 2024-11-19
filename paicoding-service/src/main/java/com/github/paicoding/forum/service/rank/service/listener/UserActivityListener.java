@@ -25,7 +25,6 @@ import org.springframework.stereotype.Component;
 public class UserActivityListener {
     @Autowired
     private UserActivityRankService userActivityRankService;
-
     /**
      * 用户操作行为，增加对应的积分
      *

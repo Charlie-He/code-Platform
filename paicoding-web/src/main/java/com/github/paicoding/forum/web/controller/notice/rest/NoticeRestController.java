@@ -65,28 +65,6 @@ public class NoticeRestController {
                                                 @RequestParam(name = "pageSize", required = false) Long pageSize) {
         return ResVo.ok(listItems(type, page, pageSize));
     }
-
-//    /**
-//     * 返回渲染好的分页信息
-//     *
-//     * @param type
-//     * @param page
-//     * @param pageSize
-//     * @return
-//     */
-//    @RequestMapping(path = "items")
-//    public ResVo<NextPageHtmlVo> listForView(@RequestParam(name = "type") String type,
-//                                             @RequestParam("page") Long page,
-//                                             @RequestParam(name = "pageSize", required = false) Long pageSize) {
-//        type = type.toLowerCase().trim();
-//        PageListVo<NotifyMsgDTO> list = listItems(type, page, pageSize);
-//        NoticeResVo vo = new NoticeResVo();
-//        vo.setList(list);
-//        vo.setSelectType(type);
-//        String html = templateEngineHelper.render("views/notice/tab/notify-" + type, vo);
-//        return ResVo.ok(new NextPageHtmlVo(html, list.getHasMore()));
-//    }
-
     @RequestMapping({"/messages/{type}", "/messages"})
     public ResultVo<NoticeResultVo> list(@PathVariable(name = "type", required = false) String type,
                                          @RequestParam(name="currentPage", required = false, defaultValue = "1") Integer currentPage,

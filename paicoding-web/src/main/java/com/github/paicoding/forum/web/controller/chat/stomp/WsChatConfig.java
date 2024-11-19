@@ -20,7 +20,7 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
  */
 @Slf4j
 @Configuration
-@EnableWebSocketMessageBroker // 开启websocket代理
+@EnableWebSocketMessageBroker // 注解开启使用STOMP协议来传输基于代理(message broker)的消息,这时控制器支持使用@MessageMapping,就像使用@RequestMapping一样
 public class WsChatConfig implements WebSocketMessageBrokerConfigurer {
     /**
      * 这里定义的是客户端接收服务端消息的相关信息，如派聪明的回答： WsAnswerHelper#response 就是往 "/chat/rsp" 发送消息
@@ -32,8 +32,10 @@ public class WsChatConfig implements WebSocketMessageBrokerConfigurer {
     public void configureMessageBroker(MessageBrokerRegistry config) {
         // 开启一个简单的基于内存的消息代理，前缀是/user的将消息会转发给消息代理 broker
         // 然后再由消息代理，将消息广播给当前连接的客户端
+        // 启用SimpleBroker，使得订阅到此"chat"前缀的客户端可以收到消息.
         config.enableSimpleBroker("/chat");
 
+        // 应用目的地址
         // 表示配置一个或多个前缀，通过这些前缀过滤出需要被注解方法处理的消息。
         // 例如，前缀为 /app 的 destination 可以通过@MessageMapping注解的方法处理，
         // 而其他 destination （例如 /topic /queue）将被直接交给 broker 处理

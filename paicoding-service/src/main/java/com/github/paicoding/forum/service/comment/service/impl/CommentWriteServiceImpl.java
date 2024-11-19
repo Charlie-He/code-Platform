@@ -63,8 +63,7 @@ public class CommentWriteServiceImpl implements CommentWriteService {
         commentDO.setCreateTime(now);
         commentDO.setUpdateTime(now);
         commentDao.save(commentDO);
-
-        // 2. 保存足迹信息 : 文章的已评信息 + 评论的已评信息
+        // 2. 保存用户足迹信息 : 文章的已评信息 + 评论的已评信息
         ArticleDO article = articleReadService.queryBasicArticle(commentSaveReq.getArticleId());
         if (article == null) {
             throw ExceptionUtil.of(StatusEnum.ARTICLE_NOT_EXISTS, commentSaveReq.getArticleId());

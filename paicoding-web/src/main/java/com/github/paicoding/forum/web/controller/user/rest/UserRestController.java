@@ -87,59 +87,6 @@ public class UserRestController {
         return ResVo.ok(true);
     }
 
-    /**
-     * 用户的文章列表翻页
-     *
-     * @param userId
-     * @param homeSelectType
-     * @return
-     */
-//    @GetMapping(path = "articleList")
-//    public ResVo<NextPageHtmlVo> articleList(@RequestParam(name = "userId") Long userId,
-//                                             @RequestParam(name = "homeSelectType") String homeSelectType,
-//                                             @RequestParam("page") Long page,
-//                                             @RequestParam(name = "pageSize", required = false) Long pageSize) {
-//        HomeSelectEnum select = HomeSelectEnum.fromCode(homeSelectType);
-//        if (select == null) {
-//            return ResVo.fail(StatusEnum.ILLEGAL_ARGUMENTS);
-//        }
-//
-//        if (pageSize == null) {
-//            pageSize = PageParam.DEFAULT_PAGE_SIZE;
-//        }
-//        PageParam pageParam = PageParam.newPageInstance(page, pageSize);
-//        PageListVo<ArticleDTO> dto = articleReadService.queryArticlesByUserAndType(userId, pageParam, select);
-//        String html = templateEngineHelper.renderToVo("views/user/articles/index", "homeSelectList", dto);
-//        return ResVo.ok(new NextPageHtmlVo(html, dto.getHasMore()));
-//    }
-
-//    @GetMapping(path = "followList")
-//    public ResVo<NextPageHtmlVo> followList(@RequestParam(name = "userId") Long userId,
-//                                            @RequestParam(name = "followSelectType") String followSelectType,
-//                                            @RequestParam("page") Long page,
-//                                            @RequestParam(name = "pageSize", required = false) Long pageSize) {
-//        if (pageSize == null) {
-//            pageSize = PageParam.DEFAULT_PAGE_SIZE;
-//        }
-//        PageParam pageParam = PageParam.newPageInstance(page, pageSize);
-//        PageListVo<FollowUserInfoDTO> followList;
-//        boolean needUpdateRelation = false;
-//        if (followSelectType.equals(FollowTypeEnum.FOLLOW.getCode())) {
-//            followList = userRelationService.getUserFollowList(userId, pageParam);
-//        } else {
-//            // 查询粉丝列表时，只能确定粉丝关注了userId，但是不能反向判断，因此需要再更新下映射关系，判断userId是否有关注这个用户
-//            followList = userRelationService.getUserFansList(userId, pageParam);
-//            needUpdateRelation = true;
-//        }
-//
-//        Long loginUserId = ReqInfoContext.getReqInfo().getUserId();
-//        if (!Objects.equals(loginUserId, userId) || needUpdateRelation) {
-//            userRelationService.updateUserFollowRelationId(followList, userId);
-//        }
-//        String html = templateEngineHelper.renderToVo("views/user/follows/index", "followList", followList);
-//        return ResVo.ok(new NextPageHtmlVo(html, followList.getHasMore()));
-//    }
-
 
     /**
      * 获取用户主页信息，通常只有作者本人才能进入这个页面

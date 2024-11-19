@@ -2,14 +2,21 @@ package com.github.paicoding.forum.web.controller.chat.rest;
 
 import com.github.paicoding.forum.api.model.context.ReqInfoContext;
 import com.github.paicoding.forum.api.model.enums.ai.AISourceEnum;
+import com.github.paicoding.forum.api.model.vo.chat.ChatItemVo;
+import com.github.paicoding.forum.api.model.vo.chat.ChatRecordsVo;
+import com.github.paicoding.forum.service.chatai.service.processMessage;
 import com.github.paicoding.forum.web.controller.chat.helper.WsAnswerHelper;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -23,6 +30,8 @@ import java.util.Map;
 public class ChatRestController {
     @Autowired
     private WsAnswerHelper answerHelper;
+    @Resource
+    private processMessage processMessage;
 
     /**
      * 接收用户发送的消息
@@ -36,12 +45,9 @@ public class ChatRestController {
      * @Headers 实现请求头格式的参数解析, @Header("headName") 表示获取某个请求头的内容
      */
     @MessageMapping("/chat/{session}")
+//    @SendTo("/chat/rsp")
     public void chat(String msg, @DestinationVariable("session") String session, @Header("simpSessionAttributes") Map<String, Object> attrs) {
-        String aiType = (String) attrs.get(WsAnswerHelper.AI_SOURCE_PARAM);
-        answerHelper.execute(attrs, () -> {
-            log.info("{} 用户开始了对话: {} - {}", ReqInfoContext.getReqInfo().getUser(), aiType, msg);
-            AISourceEnum source = aiType == null ? null : AISourceEnum.valueOf(aiType);
-            answerHelper.sendMsgToUser(source, session, msg);
-        });
+        processMessage.processMessage(msg);
+
     }
 }

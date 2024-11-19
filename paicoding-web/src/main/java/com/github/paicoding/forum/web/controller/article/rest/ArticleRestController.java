@@ -94,29 +94,6 @@ public class ArticleRestController {
 
     /**
      * 文章详情页
-     * - 参数解析知识点
-     *
-     * @param articleId
-     * @return
-     */
-//    @GetMapping("/data/detail/{articleId}")
-//    public ResultVo<ArticleDetailVo> detail(@PathVariable(name = "articleId") Long articleId) throws IOException {
-//        ArticleDetailVo vo = new ArticleDetailVo();
-//        // 文章相关信息
-//        ArticleDTO articleDTO = articleService.queryFullArticleInfo(articleId, ReqInfoContext.getReqInfo().getUserId());
-//        // 返回给前端页面时，转换为html格式
-//        articleDTO.setContent(MarkdownConverter.markdownToHtml(articleDTO.getContent()));
-//        vo.setArticle(articleDTO);
-//
-//        // 作者信息
-//        BaseUserInfoDTO user = userService.queryBasicUserInfo(articleDTO.getAuthor());
-//        articleDTO.setAuthorName(user.getUserName());
-//        articleDTO.setAuthorAvatar(user.getPhoto());
-//        return ResultVo.ok(vo);
-//    }
-
-    /**
-     * 文章详情页
      *
      * @param articleId
      * @return
@@ -243,7 +220,7 @@ public class ArticleRestController {
 
 
     /**
-     * 收藏、点赞等相关操作
+     * 收藏、点赞相关操作
      *
      * @param articleId
      * @param type      取值来自于 OperateTypeEnum#code
@@ -254,9 +231,7 @@ public class ArticleRestController {
     @MdcDot(bizCode = "#articleId")
     public ResVo<Boolean> favor(@RequestParam(name = "articleId") Long articleId,
                                 @RequestParam(name = "type") Integer type) throws IOException, TimeoutException {
-        if (log.isDebugEnabled()) {
-            log.debug("开始点赞: {}", type);
-        }
+        log.info("消息通知开始: {}", type);
         OperateTypeEnum operate = OperateTypeEnum.fromCode(type);
         if (operate == OperateTypeEnum.EMPTY) {
             return ResVo.fail(StatusEnum.ILLEGAL_ARGUMENTS_MIXED, type + "非法");
@@ -273,16 +248,11 @@ public class ArticleRestController {
                 operate);
         // 点赞、收藏消息
         NotifyTypeEnum notifyType = OperateTypeEnum.getNotifyType(operate);
-        // 点赞消息走 RabbitMQ，其它走 Java 内置消息机制
-        if ((notifyType.equals(NotifyTypeEnum.PRAISE) || notifyType.equals(NotifyTypeEnum.CANCEL_PRAISE)) && rabbitmqService.enabled()) {
-            rabbitmqService.publishDirectMsg(new MessageQueueEvent<>(notifyType, foot), CommonConstants.MESSAGE_QUEUE_KEY_NOTIFY);
-        } else {
-            Optional.ofNullable(notifyType).ifPresent(notify -> SpringUtil.publishEvent(new NotifyMsgEvent<>(this, notify, foot)));
-        }
-
-        if (log.isDebugEnabled()) {
-            log.info("点赞结束: {}", type);
-        }
+        // 所有通知消息走RabbitMQ
+        rabbitmqService.publishDirectMsg(new MessageQueueEvent<>(notifyType, foot), CommonConstants.MESSAGE_QUEUE_KEY_NOTIFY);
+        //使用spring监听机制实现用户相关计数和活跃分记录
+        Optional.ofNullable(notifyType).ifPresent(notify -> SpringUtil.publishEvent(new NotifyMsgEvent<>(this, notify, foot)));
+        log.info("消息通知结束: {}", type);
         return ResVo.ok(true);
     }
 

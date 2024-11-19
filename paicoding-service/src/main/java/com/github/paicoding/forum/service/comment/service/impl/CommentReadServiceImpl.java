@@ -84,16 +84,19 @@ public class CommentReadServiceImpl implements CommentReadService {
     private void buildCommentRelation(List<CommentDO> subComments, Map<Long, TopCommentDTO> topComments) {
         Map<Long, SubCommentDTO> subCommentMap = subComments.stream().collect(Collectors.toMap(CommentDO::getId, CommentConverter::toSubDto));
         subComments.forEach(comment -> {
+            //得到子评论对应的一级评论
             TopCommentDTO top = topComments.get(comment.getTopCommentId());
             if (top == null) {
                 return;
             }
+            //得到子评论
             SubCommentDTO sub = subCommentMap.get(comment.getId());
             top.getChildComments().add(sub);
+            //如果子评论的父评论就是一级评论，则进行下一次迭代
             if (Objects.equals(comment.getTopCommentId(), comment.getParentCommentId())) {
                 return;
             }
-
+            //查询子评论的父评论
             SubCommentDTO parent = subCommentMap.get(comment.getParentCommentId());
             sub.setParentContent(parent == null ? "~~已删除~~" : parent.getCommentContent());
         });

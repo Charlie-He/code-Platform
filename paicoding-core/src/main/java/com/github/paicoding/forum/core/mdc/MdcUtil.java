@@ -3,8 +3,11 @@ package com.github.paicoding.forum.core.mdc;
 import org.slf4j.MDC;
 
 /**
- * @author XuYifei
+ * MDC
+ * 在多线程环境中存储每个线程特定的诊断信息
+ * @author
  * @date 2024-07-12
+ *
  */
 public class MdcUtil {
     public static final String TRACE_ID_KEY = "traceId";

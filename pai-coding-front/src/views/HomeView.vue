@@ -4,7 +4,6 @@
 
 <!--  正文内容-->
     <div class="home mt-2">
-
       <el-skeleton class="hidden-when-screen-small" :loading="contentLoading" animated :throttle="200">
         <template #template>
           <div style="height: 400px">

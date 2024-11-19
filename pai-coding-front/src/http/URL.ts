@@ -6,8 +6,8 @@
 // export const EXCEL_PROCESS_BASE_URL = "https://www.xuyifei.site:5000"
 
 //
-export const BASE_URL = "http://localhost:8081"
-export const WS_URL = "ws://localhost:8081"
+export const BASE_URL = "http://localhost:8080"
+export const WS_URL = "ws://localhost:8080"
 
 
 // 获得global信息还有siteInfo信息

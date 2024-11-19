@@ -17,19 +17,6 @@
               </div>
               <div class="chat-annotation active-color" v-else>
                 {{global.user.userName}}
-<!--                <div th:switch="${global.user.starStatus.code}">-->
-<!--                  <a th:case="-1"-->
-<!--                     href="#"-->
-<!--                     class="annotation"-->
-<!--                     data-target="#registerModal"-->
-<!--                     data-toggle="modal"-->
-<!--                  >绑定编程星球，提升每天对话次数</a>-->
-<!--                  <span th:case="0" class="annotation">审核中</span>-->
-<!--                  <span th:case="1" class="annotation">试用中，添加管理员微信 xyf857998989 催审核</span>-->
-<!--                  <div class="c-bubble-trigger com-verification" th:case="2">-->
-<!--                    <i class="verified"></i>-->
-<!--                  </div>-->
-<!--                </div>-->
                     <span class="annotation">试用中</span>
                     <div class="c-bubble-trigger com-verification">
                       <i class="verified"></i>
@@ -50,20 +37,20 @@
               @change="chatTypeChange"
               v-model="chatType"
               placeholder="选择对话模型"
-              default-first-option="XUN_FEI_AI"
+              default-first-option="CHAT_GPT_3_5"
             >
               <el-option
                 :value="AiTypeEnum.XUN_FEI_AI"
                 label="讯飞星火"
               />
-<!--              <el-option-->
-<!--                :value="AiTypeEnum.PAI_AI"-->
-<!--                label="技术派"-->
-<!--              />-->
-<!--              <el-option-->
-<!--                :value="AiTypeEnum.CHAT_GPT_3_5"-->
-<!--                label="OPENAI"-->
-<!--              />-->
+              <el-option
+                :value="AiTypeEnum.PAI_AI"
+                label="技术派"
+              />
+              <el-option
+                :value="AiTypeEnum.CHAT_GPT_3_5"
+                label="chatGPT"
+              />
             </el-select>
           </div>
         </div>
@@ -88,10 +75,10 @@
         </div>
 
         <div class="chat-input" id="chat-textarea">
-          <textarea v-model="chatText" id="input-field" class="form-control" rows="3" :placeholder="!global.isLogin || !global.user.userId || chatTextAreaDisabled? '你好，快登录和我对线吧': '可按回车发送'" :disabled="!global.isLogin || !global.user.userId || chatTextAreaDisabled">
+          <textarea v-model="chatText" id="input-field" class="form-control" rows="3" :placeholder="(!global.isLogin || !global.user.userId)? '你好，快登录和我对线吧': '可按回车发送'" :disabled="!global.isLogin || !global.user.userId">
           </textarea>
 
-          <button @click="sendMsg" id="send-btn" :disabled="!global.isLogin || !global.user.userId || chatBtnDisabled">
+          <button @click="sendMsg" id="send-btn" :disabled="!global.isLogin || !global.user.userId||chatText==''">
             <div class="button_icon-button-icon__qlUH3 no-dark">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" fill="none"><defs><path id="send-white_svg__a" d="M0 0h16v16H0z"></path></defs><g><mask id="send-white_svg__b" fill="#fff"><use xlink:href="#send-white_svg__a"></use></mask><g mask="url(#send-white_svg__b)"><path transform="translate(1.333 2)" d="M0 4.71 6.67 6l1.67 6.67L12.67 0 0 4.71Z" style="stroke: rgb(255, 255, 255); stroke-width: 1.33333; stroke-opacity: 1; stroke-dasharray: 0, 0;"></path><path transform="translate(8.003 6.117)" d="M0 1.89 1.89 0" style="stroke: rgb(255, 255, 255); stroke-width: 1.33333; stroke-opacity: 1; stroke-dasharray: 0, 0;"></path></g></g></svg>
             </div>
@@ -144,7 +131,11 @@ const answers = ref('')
 // 获取JWT token
 const session = getCookie("f-session")
 // 大模型的选择器
-const chatType = ref<AiTypeConstants>('XUN_FEI_AI')
+const chatType = ref<AiTypeConstants>('CHAT_GPT_3_5')
+
+const appendLastChat=ref(true)
+
+const count=ref(0)
 const chatTypeChange = (value: string ) => {
   if(global.isLogin){
     answers.value = ''
@@ -165,61 +156,41 @@ const aiLoading = ref(false)
 
 // 初始化ws
 const initWs = () => {
-  msgRecords.value[chatType.value] = []
   let aiType = chatType.value
   console.log("AITYPE = ", aiType);
   let socket = new WebSocket(`${WS_URL}/gpt/${session}/${aiType}`)
   stompClient = Stomp.over(socket)
   stompClient.connect({}, function(frame) {
     console.log('ws连接成功: ' + frame);
-    // 开放按钮和输入框
-    chatBtnDisabled.value = false
-    chatTextAreaDisabled.value = false
-    chatBtnText.value = '发送'
     // 清空输入框
     chatText.value = ''
-
     // @ts-ignore
-    stompClient.subscribe('/user/chat/rsp', function(message: Stomp.Message){
+    stompClient.subscribe('/chat/rsp', function(message: Stomp.Message){
       // 表示这个长连接，订阅了 "/chat/rsp" , 这样后端向这个路径转发消息时，我们就可以拿到对应的返回
       // 解析 JSON 字符串
-      console.log("rsp:", message);
-      let res = JSON.parse(message.body);
+      const res=message.body
       console.log("res:", res);
-
-      chatUsedCnt.value = res.usedCnt
-      chatMaxCnt.value = res.maxCnt
-
-      const data: WebSocketResponseType[] = res.records
-      if (data.length > 1) {
-        // 返回历史全部信息
-        answers.value = ''
-        for (let i = data.length - 1; i >= 0; i--) {
-          if (data[i].question) {
-            addClientMsg(data[i], false);
-          }
-          if (i == 0) {
-            msgRecords.value[chatType.value].push({
-              msgType: 'history'
-            })
-          }
-          appendServerMessage(data[i]);
-        }
-
-
-        if (chatContent.value) {
-          chatContent.value.scrollTop = chatContent.value.scrollHeight;
-        }
-      } else {
-        appendServerMessage(data[0]);
+      aiLoading.value = false
+      // 初始化 msgRecords 和 chatType
+      if (!msgRecords.value[chatType.value]) {
+        msgRecords.value[chatType.value] = [];
       }
-
-      // 添加完消息后，除了流式持续返回这种场景，其他的恢复按钮的状态
-      if(data[data.length - 1].answerType != 'STREAM') {
-        chatBtnDisabled.value = false
+      console.log("appendLastChat的值为", appendLastChat.value);
+      if (appendLastChat.value) {
+        // 如果 appendLastChat 为 true，追加一个新的记录
+        msgRecords.value[chatType.value].push({
+          msgType: 'answer',
+          answer: '',
+        });
+        appendLastChat.value = false; // 更新状态
       }
+      // 对于流式返回的结果，找上一次的返回，进行结果的追加，手动将分隔符给干掉
+      let lastRecord = msgRecords.value[chatType.value].at(-1);
+      if (lastRecord) {
+        lastRecord.answer += res;
+      }
+      scrollToBottom();
     })
-
   })
   // 关闭链接
   socket.onclose = disconnect;
@@ -239,49 +210,23 @@ function disconnect() {
 }
 
 // 添加服务器端消息
-function appendServerMessage(answer: WebSocketResponseType) {
-  let content = answer.answer;
-  let time = answer.answerTime;
-  let answerType = answer.answerType;
-  let chatId = answer.chatUid
+function appendServerMessage(answer: string) {
   let appendLastChat = false;
   aiLoading.value = false
-  // 如果 source 等于"CHAT_GPT_3_5"
-  if("JSON" === answerType) {
-    // 需要对 body 的 JSON 字符串进行解析
-    const res = JSON.parse(content);
-    console.log("CHAT_GPT_3_5 res:", res);
-    if (res.length === 1) {
-      content = res[0].message.content;
-    }
-  } else if ('STREAM' === answerType || 'STREAM_END' === answerType) {
-    // const lastDiv = $(`#${chatId}`)
-    const lastIndex = msgRecords.value[chatType.value].findLastIndex((msg) => msg.msgType === 'answer' && msg.chatUid === chatId)
-    if(lastIndex == -1){
-      // 上一次没有输出过，则格式化文本，重新输出
-    }else{
-      // 对于流式返回的结果，找上一次的返回，进行结果的追加，手动将分隔符给干掉
-      msgRecords.value[chatType.value][lastIndex].answer = content
-      appendLastChat = true
-    }
-
-  }
-
+  // 对于流式返回的结果，找上一次的返回，进行结果的追加，手动将分隔符给干掉
+  msgRecords.value[chatType.value][0].answer+=answer
   if(!appendLastChat) {
     msgRecords.value[chatType.value].push({
       msgType: 'answer',
-      answer: content,
-      answerTime: time,
-      chatUid: chatId
+      answer: answer,
     })
   }
   scrollToBottom();
 
 
   // 添加完后滚动到底部
-  // scrollToBottom();
+  scrollToBottom();
 
-  // copy();
 
 }
 
@@ -346,8 +291,8 @@ const doSend = () => {
   // @ts-ignore
   stompClient.send("/app/chat/" + session, {'s-uid': session}, qa);
   // 清空 textarea
+  appendLastChat.value=true;
   chatText.value = ''
-
   msgRecords.value[chatType.value].push({
     msgType: 'question',
     question: qa
