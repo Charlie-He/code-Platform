@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @program: pai_coding
  * @description: 本地缓存配置
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-21
  */
 

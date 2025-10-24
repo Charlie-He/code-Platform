@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @program: pai_coding
  * @description: rabbitmq的自定义消息转换器
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-11-01
  */
 

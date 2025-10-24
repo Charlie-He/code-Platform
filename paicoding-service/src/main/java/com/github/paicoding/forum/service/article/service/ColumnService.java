@@ -10,7 +10,7 @@ import com.github.paicoding.forum.service.article.repository.entity.ColumnArticl
 import java.util.List;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface ColumnService {

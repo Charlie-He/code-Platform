@@ -27,7 +27,7 @@ import java.io.InputStream;
 /**
  * 阿里云oss文件上传
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

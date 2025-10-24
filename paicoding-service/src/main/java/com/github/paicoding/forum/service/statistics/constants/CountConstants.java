@@ -3,7 +3,7 @@ package com.github.paicoding.forum.service.statistics.constants;
 /**
  * 用户相关的常量信息
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface CountConstants {

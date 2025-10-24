@@ -5,7 +5,6 @@ import lombok.Getter;
 /**
  * 点赞状态枚举
  *
- * @author XuYifei
  * @since 2024-07-12
  */
 @Getter

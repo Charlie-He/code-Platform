@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class SessionUtil {

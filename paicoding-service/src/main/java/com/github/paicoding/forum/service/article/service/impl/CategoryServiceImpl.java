@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * 类目Service
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Service

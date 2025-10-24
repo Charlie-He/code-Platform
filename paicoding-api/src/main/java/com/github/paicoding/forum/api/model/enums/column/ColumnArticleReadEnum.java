@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 专栏文章的阅读类型
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @AllArgsConstructor

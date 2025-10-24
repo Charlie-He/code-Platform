@@ -8,8 +8,8 @@ view:
     zsxqUrl: ''
     zsxqPosterUrl: ''
     contactMeTitle: 联系我 - 小灰飞
-    contactMeWxQrCode: https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/%E5%85%AC%E4%BC%97%E5%8F%B7qrcode.jpg
-    contactMeStarQrCode: https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/%E5%85%AC%E4%BC%97%E5%8F%B7qrcode.jpg
+    contactMeWxQrCode: https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/%E5%85%AC%E4%BC%97%E5%8F%B7qrcode.jpg
+    contactMeStarQrCode: https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/%E5%85%AC%E4%BC%97%E5%8F%B7qrcode.jpg
     pageSize: 20
     cdnImgStyle:
     websiteRecord:  备案号:冀ICP备2023036490号-1

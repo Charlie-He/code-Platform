@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 /**
  * 标签管理表
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

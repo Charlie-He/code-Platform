@@ -1,7 +1,7 @@
 package com.github.paicoding.forum.core.util.id.snowflake;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface IdGenerator {

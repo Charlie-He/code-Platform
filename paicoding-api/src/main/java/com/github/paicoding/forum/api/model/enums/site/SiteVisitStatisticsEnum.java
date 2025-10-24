@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 站点统计类型枚举
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @AllArgsConstructor

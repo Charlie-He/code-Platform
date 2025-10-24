@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * 握手拦截器, 用于身份验证识别
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

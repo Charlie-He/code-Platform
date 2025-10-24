@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
@@ -23,12 +24,11 @@ import java.util.Objects;
 /**
  * 表初始化，只有首次启动时，才会执行
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j
 @Configuration
-@Profile("dev")
 public class ForumDataSourceInitializer {
     @Value("${database.name}")
     private String database;

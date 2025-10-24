@@ -6,7 +6,7 @@ import com.github.paicoding.forum.service.article.repository.entity.CategoryDO;
 /**
  * 类目管理mapper接口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface CategoryMapper extends BaseMapper<CategoryDO> {

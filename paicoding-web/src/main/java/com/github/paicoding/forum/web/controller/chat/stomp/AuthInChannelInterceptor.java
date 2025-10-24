@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * 权限拦截器，消息发送前进行拦截
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

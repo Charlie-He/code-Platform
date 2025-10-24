@@ -7,7 +7,7 @@ import java.util.concurrent.Callable;
 /**
  * 统计耗时工具类, 这个只支持同步的耗时打印，不支持异步的场景
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class StopWatchUtil {

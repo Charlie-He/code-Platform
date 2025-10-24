@@ -8,8 +8,8 @@ server:
     min-response-size: 2KB
 
 spring:
-  profiles:
-    active: dev
+#  profiles:
+#    active: dev
   #  profiles:
   #    active: dal,web,config,image
   # 替换上面作废的spring.profiels.actice配置参数
@@ -73,7 +73,7 @@ knife4j:
     version: 1.0.0
     concat:
       - 小灰飞
-      - https://www.xuyifei.site
+      - https://www.heshaowei.site
     license: Apache License 2.0
     email: 857998989@qq.com
     group:

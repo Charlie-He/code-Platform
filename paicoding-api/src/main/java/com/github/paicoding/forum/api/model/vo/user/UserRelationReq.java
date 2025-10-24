@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * 用户关系入参
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

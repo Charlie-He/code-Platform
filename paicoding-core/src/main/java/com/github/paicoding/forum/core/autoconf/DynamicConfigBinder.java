@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 /**
  * 自定义动态配置绑定
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class DynamicConfigBinder {

@@ -63,7 +63,6 @@ import java.util.stream.Collectors;
 /**
  * 文章查询相关服务类
  *
- * @author XuYifei
  * @date 2024-07-09
  */
 @Slf4j

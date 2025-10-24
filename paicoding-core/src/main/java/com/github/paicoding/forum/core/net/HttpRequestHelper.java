@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 请求工具类
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

@@ -61,6 +61,7 @@ public class processMessageImpl implements processMessage{
                                 if ("[DONE]".equals(content)) {
                                     break; // 流式响应结束
                                 }
+                                log.info(message);
                                 //推送数据到前端
                                 messagingTemplate.convertAndSend("/chat/rsp",message);
                             }

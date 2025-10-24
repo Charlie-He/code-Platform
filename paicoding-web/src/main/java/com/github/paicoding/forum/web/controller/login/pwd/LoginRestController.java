@@ -23,7 +23,7 @@ import java.util.Optional;
 /**
  * 用户名 密码方式的登录/登出的入口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @RestController
@@ -32,23 +32,6 @@ public class LoginRestController {
     @Autowired
     private LoginService loginService;
 
-    /**
-     * 用户名和密码登录
-     * 可以根据星球编号/用户名进行密码匹配
-     */
-    @PostMapping("/login/username")
-    public ResVo<Boolean> login(@RequestParam(name = "username") String username,
-                                @RequestParam(name = "password") String password,
-                                HttpServletResponse response) {
-        String session = loginService.loginByUserPwd(username, password);
-        if (StringUtils.isNotBlank(session)) {
-            // cookie中写入用户登录信息，用于身份识别
-            response.addCookie(SessionUtil.newCookie(LoginService.SESSION_KEY, session));
-            return ResVo.ok(true);
-        } else {
-            return ResVo.fail(StatusEnum.LOGIN_FAILED_MIXED, "用户名和密码登录异常，请稍后重试");
-        }
-    }
 
     /**
      * 用户名和密码登录
@@ -63,24 +46,19 @@ public class LoginRestController {
             response.addCookie(cookie);
             return ResVo.ok(new LoginSuccessVo(cookie.getValue()));
         } else {
-            return ResVo.fail(StatusEnum.LOGIN_FAILED_MIXED, "用户名和密码登录异常，请稍后重试");
+            return ResVo.fail(StatusEnum.LOGIN_FAILED_MIXED, "用户名和密码错误，请重试");
         }
     }
 
     /**
-     * 绑定星球账号
+     * TODO 注册
      */
     @PostMapping("/login/register")
-    public ResVo<Boolean> register(UserPwdLoginReq loginReq,
+    public ResVo<Boolean> register(@RequestBody UserPwdLoginReq loginReq,
                                    HttpServletResponse response) {
-        String session = loginService.registerByUserPwd(loginReq);
-        if (StringUtils.isNotBlank(session)) {
-            // cookie中写入用户登录信息，用于身份识别
-            response.addCookie(SessionUtil.newCookie(LoginService.SESSION_KEY, session));
-            return ResVo.ok(true);
-        } else {
-            return ResVo.fail(StatusEnum.LOGIN_FAILED_MIXED, "用户名和密码登录异常，请稍后重试");
-        }
+        System.out.println("红红火火恍恍惚惚哈哈哈哈哈哈哈哈哈"+loginReq.getUsername()+":"+loginReq.getPassword());
+        loginService.registerByUserPwd(loginReq);
+        return ResVo.ok(true);
     }
 
 

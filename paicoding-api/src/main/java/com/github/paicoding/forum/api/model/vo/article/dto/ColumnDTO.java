@@ -6,7 +6,7 @@ import com.github.paicoding.forum.api.model.vo.user.dto.ColumnFootCountDTO;
 import lombok.Data;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

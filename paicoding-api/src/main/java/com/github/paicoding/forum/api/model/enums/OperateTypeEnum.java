@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * 操作类型
  *
- * @author XuYifei
+ * @author heshaowei
  * @since 2024-07-12
  */
 @Getter
@@ -80,6 +80,7 @@ public enum OperateTypeEnum {
 
     public abstract int getDbStatCode();
 
+
     /**
      * 判断操作的是否是文章
      *
@@ -89,7 +90,6 @@ public enum OperateTypeEnum {
     public static DocumentTypeEnum getOperateDocumentType(OperateTypeEnum type) {
         return (type == COMMENT || type == DELETE_COMMENT) ? DocumentTypeEnum.COMMENT : DocumentTypeEnum.ARTICLE;
     }
-
     public static NotifyTypeEnum getNotifyType(OperateTypeEnum type) {
         switch (type) {
             case PRAISE:

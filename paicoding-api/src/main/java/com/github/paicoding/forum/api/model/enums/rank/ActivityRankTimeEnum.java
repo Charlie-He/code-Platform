@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 活跃排行榜时间周期
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @AllArgsConstructor

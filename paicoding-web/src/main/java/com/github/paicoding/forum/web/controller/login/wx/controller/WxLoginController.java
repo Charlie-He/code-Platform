@@ -19,7 +19,7 @@ import java.io.IOException;
 /**
  * 公众号登陆的长连接控制器
  *
- * @author XuYifei
+ * @author heshaowei
  * @date : 2024-07-12
  **/
 @Controller

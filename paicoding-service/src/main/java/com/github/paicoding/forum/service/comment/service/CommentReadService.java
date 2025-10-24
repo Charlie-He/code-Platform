@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 评论Service接口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface CommentReadService {

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 作者白名单服务
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @RestController

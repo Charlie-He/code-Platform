@@ -3,7 +3,7 @@ package com.github.paicoding.forum.web.controller.login.wx.vo;
 import lombok.Data;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

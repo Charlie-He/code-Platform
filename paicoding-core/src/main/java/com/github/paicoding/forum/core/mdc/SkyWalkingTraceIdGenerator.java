@@ -7,7 +7,7 @@ import java.util.UUID;
 /**
  * SkyWalking的traceId生成策略
  * <p>
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class SkyWalkingTraceIdGenerator {

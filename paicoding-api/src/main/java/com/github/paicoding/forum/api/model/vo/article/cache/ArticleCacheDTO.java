@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * @program: pai_coding
  * @description: 文章缓存时的对象结构
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-24
  */
 

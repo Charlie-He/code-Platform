@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @program: pai_coding
  * @description: 控制热点文章的缓存访问参数
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-24
  */
 

@@ -24,7 +24,7 @@ import java.util.function.Consumer;
 /**
  * 聊天的抽象模板类
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

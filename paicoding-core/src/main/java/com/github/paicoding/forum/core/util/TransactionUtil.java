@@ -6,7 +6,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 /**
  * 事务辅助工具类
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class TransactionUtil {

@@ -150,7 +150,7 @@
                           <span class="mr-3"><el-icon size="11"><InfoFilled /></el-icon>采用自旋锁策略优化缓存结构，针对热key的并发访问进行同步，防止其失效时的缓存击穿</span>
                         </p>
                         <p class="m-1">
-                          <span><el-icon size="13"><CaretRight /></el-icon><b>项目链接：</b><a href="http://www.xuyifei.site"><u>就是本项目</u></a></span>
+                          <span><el-icon size="13"><CaretRight /></el-icon><b>项目链接：</b><a href="http://www.heshaowei.site"><u>就是本项目</u></a></span>
                         </p>
                       </div>
                     </template>

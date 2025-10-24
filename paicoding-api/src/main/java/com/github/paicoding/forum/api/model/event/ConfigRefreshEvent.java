@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationEvent;
 /**
  * 配置变更消息事件
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Getter

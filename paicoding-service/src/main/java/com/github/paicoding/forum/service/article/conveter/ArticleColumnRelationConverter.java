@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 /**
  * 文章关联专栏转换器
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024/10/24
  */
 @Mapper(componentModel = "spring")

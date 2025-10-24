@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j
@@ -78,7 +78,6 @@ public class SitemapServiceImpl implements SitemapService {
             List<SimpleArticleDTO> list = articleDao.getBaseMapper().listArticlesOrderById(lastId, SCAN_SIZE);
             // 刷新文章的统计信息
             list.forEach(s -> countService.refreshArticleStatisticInfo(s.getId()));
-
             // 刷新站点地图信息
             Map<String, Long> map = list.stream().collect(Collectors.toMap(s -> String.valueOf(s.getId()), s -> s.getCreateTime().getTime(), (a, b) -> a));
             RedisClient.hMSet(SITE_MAP_CACHE_KEY, map);

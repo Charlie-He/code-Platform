@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 星球来源枚举
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Getter

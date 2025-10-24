@@ -13,6 +13,7 @@ import com.github.paicoding.forum.service.notify.repository.entity.NotifyMsgDO;
 import com.github.paicoding.forum.service.notify.service.NotifyService;
 import com.github.paicoding.forum.service.user.repository.entity.UserFootDO;
 import com.github.paicoding.forum.service.user.service.UserRelationService;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -21,7 +22,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024/07/11
  */
 @Service

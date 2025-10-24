@@ -6,7 +6,7 @@
           <span>{{global.siteInfo.websiteRecord}}</span>
         </a>
         <a class="text-reset"
-           href="http://xuyifei.site"
+           href="http://heshaowei.site"
            target="_blank">
           小灰灰
           {{'© 2024-' + format(new Date(), 'yyyy') + ' 编程汇 '}}

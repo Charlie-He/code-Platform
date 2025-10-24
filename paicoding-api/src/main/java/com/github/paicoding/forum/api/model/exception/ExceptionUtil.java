@@ -3,7 +3,7 @@ package com.github.paicoding.forum.api.model.exception;
 import com.github.paicoding.forum.api.model.vo.constants.StatusEnum;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class ExceptionUtil {

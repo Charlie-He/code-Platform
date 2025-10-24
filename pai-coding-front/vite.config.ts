@@ -23,7 +23,7 @@ export default defineConfig({
   // server: {
   //   proxy: {
   //     '/': {
-  //       target: 'http://xuyifei.site:8081/',
+  //       target: 'http://heshaowei.site:8081/',
   //       changeOrigin: true,
   //       secure: true,
   //       rewrite: (path) => {

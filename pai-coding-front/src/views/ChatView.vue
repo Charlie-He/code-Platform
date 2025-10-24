@@ -61,7 +61,7 @@
               <el-avatar :size="35" :src="global.user.photo" class="m-1"></el-avatar>
             </div>
             <div v-if="msg.msgType == 'answer'" class="flex justify-start">
-              <el-avatar :size="35" class="m-1 min-w-8" src="https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/avatar/llm-avatar1.png"></el-avatar>
+              <el-avatar :size="35" class="m-1 min-w-8" src="https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/avatar/llm-avatar1.png"></el-avatar>
               <p style="background: #F2F2F2" class="center-content p-2 rounded-lg m-1 text-sm"><MdPreview style="font-size: small" :model-value="msg.answer"></MdPreview></p>
             </div>
 
@@ -69,7 +69,7 @@
 
           </div>
           <div v-if="aiLoading" class="flex justify-start">
-            <el-avatar :size="35" class="m-1" src="https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/avatar/llm-avatar1.png"></el-avatar>
+            <el-avatar :size="35" class="m-1" src="https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/avatar/llm-avatar1.png"></el-avatar>
             <p style="background: #F2F2F2" class="center-content p-2 rounded-lg m-1 text-sm"> <el-icon :size="20" class="is-loading"><Loading /></el-icon></p>
           </div>
         </div>

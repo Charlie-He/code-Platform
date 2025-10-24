@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author xuyifei
+ * @author heshaowei
  * 标记字段是缓存的key
  */
 @Target(ElementType.FIELD)

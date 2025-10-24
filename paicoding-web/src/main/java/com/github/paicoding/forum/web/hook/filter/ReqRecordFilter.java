@@ -4,10 +4,8 @@ import cn.hutool.core.date.StopWatch;
 import com.github.paicoding.forum.api.model.context.ReqInfoContext;
 import com.github.paicoding.forum.core.async.AsyncUtil;
 import com.github.paicoding.forum.core.mdc.MdcUtil;
-import com.github.paicoding.forum.core.util.CrossUtil;
-import com.github.paicoding.forum.core.util.EnvUtil;
-import com.github.paicoding.forum.core.util.IpUtil;
-import com.github.paicoding.forum.core.util.SessionUtil;
+import com.github.paicoding.forum.core.util.*;
+import com.github.paicoding.forum.service.sitemap.service.impl.SitemapServiceImpl;
 import com.github.paicoding.forum.service.statistics.service.StatisticsSettingService;
 import com.github.paicoding.forum.service.user.service.LoginService;
 import com.github.paicoding.forum.web.global.GlobalInitService;
@@ -33,7 +31,6 @@ import java.util.concurrent.TimeUnit;
  * 1. 请求参数日志输出过滤器
  * 2. 判断用户是否登录
  *
- * @author XuYifei
  * @date 2024-07-12
  */
 @Slf4j
@@ -137,10 +134,10 @@ public class ReqRecordFilter implements Filter {
             stopWatch.stop();
 
             ReqInfoContext.addReqInfo(reqInfo);
-//            stopWatch.start("pv/uv站点统计");
-//            // 更新uv/pv计数
-//            AsyncUtil.execute(() -> SpringUtil.getBean(SitemapServiceImpl.class).saveVisitInfo(reqInfo.getClientIp(), reqInfo.getPath()));
-//            stopWatch.stop();
+            stopWatch.start("pv/uv站点统计");
+            // 更新uv/pv计数
+            AsyncUtil.execute(() -> SpringUtil.getBean(SitemapServiceImpl.class).saveVisitInfo(reqInfo.getClientIp(), reqInfo.getPath()));
+            stopWatch.stop();
 
             stopWatch.start("回写traceId");
             // 返回头中记录traceId

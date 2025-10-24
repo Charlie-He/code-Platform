@@ -28,7 +28,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * 入口，直接运行即可
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j
@@ -45,14 +45,10 @@ public class QuickForumApplication implements WebMvcConfigurer, ApplicationRunne
     @Resource
     private GlobalViewInterceptor globalViewInterceptor;
 
-    @Resource
-    private AsyncHandlerInterceptor onlineUserStatisticInterceptor;
-
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(globalViewInterceptor).addPathPatterns("/**");
-        registry.addInterceptor(onlineUserStatisticInterceptor).addPathPatterns("/**").excludePathPatterns("/test/**").excludePathPatterns("/subscribe");
     }
 //    @Override
 //    public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {

@@ -3,7 +3,7 @@ package com.github.paicoding.forum.core.dal;
 /**
  * 数据源选择上下持有类，用于存储当前选中的是哪个数据源
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class DsContextHolder {

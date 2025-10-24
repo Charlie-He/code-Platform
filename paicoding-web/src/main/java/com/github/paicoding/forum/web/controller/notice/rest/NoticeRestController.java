@@ -24,7 +24,7 @@ import java.util.Map;
 /**
  * 消息通知
  *
- * @author XuYifei
+ * @author heshaowei
  * @date : 2024-07-12
  **/
 @Permission(role = UserRole.LOGIN)
@@ -37,7 +37,6 @@ public class NoticeRestController {
     public NoticeRestController(NotifyService notifyService) {
         this.notifyService = notifyService;
     }
-
     private PageListVo<NotifyMsgDTO> listItems(String type, Long page, Long pageSize) {
         NotifyTypeEnum typeEnum = NotifyTypeEnum.typeOf(type);
         if (typeEnum == null) {

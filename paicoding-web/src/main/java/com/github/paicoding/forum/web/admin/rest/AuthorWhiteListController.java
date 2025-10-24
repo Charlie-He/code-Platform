@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 作者白名单服务
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @RestController

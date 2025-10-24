@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 /**
  * 用户足迹Service
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Service

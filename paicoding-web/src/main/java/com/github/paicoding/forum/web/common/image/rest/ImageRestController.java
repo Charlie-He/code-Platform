@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 /**
  * 图片服务，要求登录之后才允许操作
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Permission(role = UserRole.LOGIN)

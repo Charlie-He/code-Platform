@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 敏感词相关配置，db配置表中的配置优先级更高，支持动态刷新
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

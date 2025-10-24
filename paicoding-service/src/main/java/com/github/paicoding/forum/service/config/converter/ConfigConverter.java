@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * Banner转换
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class ConfigConverter {

@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * 用户页面选择枚举
  *
- * @author XuYifei
+ * @author heshaowei
  * @since 2024-07-12
  */
 @Getter

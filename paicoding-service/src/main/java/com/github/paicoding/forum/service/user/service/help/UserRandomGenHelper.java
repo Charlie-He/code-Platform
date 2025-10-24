@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * 用户名生成器
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class UserRandomGenHelper {
@@ -57,7 +57,7 @@ public class UserRandomGenHelper {
     private static final int AVATAR_NUM = 92;
 
     private static final String AVATAR_TEMPLATE = "https://cdn.tobebetterjavaer.com/paicoding/avatar/0092.png";
-    private static final String AVATAR_DEFAULT = "https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/avatar/default-avtar.jpg";
+    private static final String AVATAR_DEFAULT = "https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/avatar/default-avtar.jpg";
 
     /**
      * 昵称自动生成器

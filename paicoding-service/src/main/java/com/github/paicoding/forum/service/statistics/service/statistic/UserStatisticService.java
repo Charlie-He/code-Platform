@@ -3,7 +3,6 @@ package com.github.paicoding.forum.service.statistics.service.statistic;
 /**
  * 用户统计服务
  *
- * @author XuYifei
  * @date 2024-07-12
  */
 public interface UserStatisticService {

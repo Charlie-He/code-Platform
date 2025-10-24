@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * 保存Column文章请求参数
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

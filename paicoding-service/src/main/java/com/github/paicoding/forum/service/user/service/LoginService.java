@@ -3,7 +3,7 @@ package com.github.paicoding.forum.service.user.service;
 import com.github.paicoding.forum.api.model.vo.user.UserPwdLoginReq;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface LoginService {
@@ -49,5 +49,5 @@ public interface LoginService {
      * @param loginReq 登录信息
      * @return
      */
-    String registerByUserPwd(UserPwdLoginReq loginReq);
+    void registerByUserPwd(UserPwdLoginReq loginReq);
 }

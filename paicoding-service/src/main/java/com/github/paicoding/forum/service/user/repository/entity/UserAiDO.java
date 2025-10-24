@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
  * ai用户表
  *
  * @ClassName: UserAiDO
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

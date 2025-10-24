@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j
@@ -43,9 +43,9 @@ public class WxAckHelper {
             textRes = "感谢优秀的你关注小菜鸡~~本公众号主要记录我的碎碎念和学习记录，希望你能和我一起进步呀！\n" +
                     "以下是我的个人语雀笔记" +
                     "\n" +
-                    "<a href=\"https://www.yuque.com/xuyifei-rl8lh\">小灰飞的语雀花园</a>\n" +
+                    "<a href=\"https://www.yuque.com/heshaowei-rl8lh\">小灰飞的语雀花园</a>\n" +
                     "\n" +
-                    "本人的学习项目：<a href=\"http://www.xuyifei.site\">小灰飞的学习项目</a>\n";
+                    "本人的学习项目：<a href=\"http://www.heshaowei.site\">小灰飞的学习项目</a>\n";
         }
         // 下面是关键词回复
         else if (chatgptService.inChat(fromUser, content)) {

@@ -12,7 +12,7 @@ INSERT INTO article
 VALUES(15, 1, 1, '字典树/前缀树的结构', '字典树/前缀树', '', '一次做题后的经历，从而学习并简单总结字典树的基本结构', 11, 2, '', 1, 0, 0, 1, 0);
 INSERT INTO article
 (id, user_id, article_type, title, short_title, picture, summary, category_id, source, source_url, offical_stat, topping_stat, cream_stat, status, deleted)
-VALUES(16, 1, 1, '技术派的系统设计方案', '', 'https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/cover/dee73c8810cb699ae1ec774a54612080.jpg', '这个项目诞生的背景主要是个人学习使用，鉴于本人还是个在校生，因此项目的规模一定不会很大，并且存在诸多问题。主要的目的是希望打造一个切实可用的项目，和各位学习的小伙伴分享自己的学习经历，并希望能够展示自己，并结识其他厉害的大佬', 9, 2, '', 1, 0, 0, 1, 0);
+VALUES(16, 1, 1, '技术派的系统设计方案', '', 'https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/cover/dee73c8810cb699ae1ec774a54612080.jpg', '这个项目诞生的背景主要是个人学习使用，鉴于本人还是个在校生，因此项目的规模一定不会很大，并且存在诸多问题。主要的目的是希望打造一个切实可用的项目，和各位学习的小伙伴分享自己的学习经历，并希望能够展示自己，并结识其他厉害的大佬', 9, 2, '', 1, 0, 0, 1, 0);
 INSERT INTO article
 (id, user_id, article_type, title, short_title, picture, summary, category_id, source, source_url, offical_stat, topping_stat, cream_stat, status, deleted)
 VALUES(17, 1, 1, '小灰飞的语雀花园', '', '', '大家好，我是小灰飞。小灰飞是谁？其实是一个平平无奇的大学森，不过也是老年人马上就要研二了。大概从大四开始，我才开始尝试日常做笔记，之前总是写在markdown文件上，然后换电脑或者时间一长就不好管理了，后来开始用语雀，语雀花园中有一些个人的小小笔记希望能和大家分享吧，也就是一边学一边记的', 8, 2, '', 1, 0, 0, 1, 0);
@@ -97,7 +97,7 @@ VALUES(16, 1, '## 整体介绍
 ### 系统模块介绍
 #### 系统架构
 基于论坛或者说博客系统的分层特点，将整个系统架构划分为展示层，应用层，服务层，如下图
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/8671f216f2cd6fa675d2ee5071bf577a.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/8671f216f2cd6fa675d2ee5071bf577a.png)
 
 #### 展示层
 其中展示层主要为用户直接接触的视图层，基于用户角色，分别提供为面向普通用户的前台与面向管理员的后台
@@ -183,7 +183,7 @@ VALUES(16, 1, '## 整体介绍
 对于第二种策略，如果是企业公众号，是可以省略输入验证码这一步骤的，借助动态二维码来直接实现扫码登录；对于个人公众号，则需要多来一步，通过输入验证码来将微信公众号的用户与需要登录的用户绑定起来
 登录工作流程如下：
 
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/1ccd749c1b3e8e90cafad25a3e8eaa88.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/1ccd749c1b3e8e90cafad25a3e8eaa88.png)
 
 ##### 库表设计
 基于公众号的登录方式，看一下用户登录表的设计
@@ -218,7 +218,7 @@ CREATE TABLE `user` (
 - 后续用户请求，携带cookie
 - 服务器从cookie中获取sessionId，然后找到uesrId
 
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/515bdaece38d3664d0c7a57d92304387.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/515bdaece38d3664d0c7a57d92304387.png)
 
 服务内部身份传递：
 另外一个需要考虑的点则是用户的身份如何在整个系统内传递？ 就现在采用的单体架构而言，借助ThreadLocal来实现
@@ -339,7 +339,7 @@ CREATE TABLE `user_foot` (
 4. 提交文章，进入待审核状态，仅用户可看详情
 5. 管理员审核通过，所有人可看详情
 
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/0ea39950b441a2ed9b0e14060f952e1e.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/0ea39950b441a2ed9b0e14060f952e1e.png)
 
 #### 文章库表设计
 考虑到文章的内容通常较大，在很多的业务场景中，实际上是不需要文章内容的，如首页、推荐列表等都只需要文章的标题等信息；此外我也希望对文章做一个版本管理（比如上线之后，再修改则新生成一个版本）
@@ -493,7 +493,7 @@ CREATE TABLE `column_article` (
 ### 评论模块
 评论可以是针对文章进行，也可以是针对另外一个评论进行回复，于是将回复也当作是一个评论
 
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/3d97fdb8b0b599cf22d3f771067c94e3.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/3d97fdb8b0b599cf22d3f771067c94e3.png)
 
 #### 评论
 将评论和回复都当成普通的评论，只是主体不同而已，因此一篇文章的评论列表，需要重点关注的就是，如何构建评论与其回复之间的层级关系
@@ -559,7 +559,7 @@ CREATE TABLE `comment` (
 - 关注
 - 系统消息
 
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/63e69441489c53ad29570b584e3ffb44.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/63e69441489c53ad29570b584e3ffb44.png)
 
 当发生方面的行为之后，再相应的地方进行主动埋点，手动发送一个消息事件，然后异步消费事件，生成消息通知
 
@@ -679,7 +679,7 @@ VALUES(17, 1, '大家好呀，我是小灰飞。
 
 大概分布也就如下：
 
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/b07571a56b8964969a8c2cde615f1542.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/b07571a56b8964969a8c2cde615f1542.png)
 
 目前整理的还不够完善和合理，就浅浅的希望有看完之后能够对我感兴趣的大佬来指点迷津吧！
 ', 0);
@@ -810,7 +810,7 @@ delete from config where id <= 6;
 # VALUES(2, 1, '加入社区2', 'https://imgs.hhui.top/forum/banner/01.png', 'https://hhui.top/', '', 2, 1, '', '{}', 0, '2023-01-13 19:15:57', '2023-01-13 19:15:57');
 INSERT INTO config
 (id, `type`, name, banner_url, jump_url, content, `rank`, status, tags, extra, deleted, create_time, update_time)
-VALUES(3, 4, '技术派上线啦！', '11', 'http://xuyifei.site/article/detail/15', '学编程，就上技术派?！', 1, 1, '2', '{}', 0, '2023-01-13 19:15:57', '2023-04-15 14:55:38');
+VALUES(3, 4, '技术派上线啦！', '11', 'http://heshaowei.site/article/detail/15', '学编程，就上技术派?！', 1, 1, '2', '{}', 0, '2023-01-13 19:15:57', '2023-04-15 14:55:38');
 # INSERT INTO config
 # (id, `type`, name, banner_url, jump_url, content, `rank`, status, tags, extra, deleted, create_time, update_time)
 # VALUES(4, 4, 'Java进阶之路.pdf来了！', ' 2', 'https://paicoding.com/column/5/1', '学 Java，就认准二哥的 Java 进阶之路。第一版 PDF 开放下载了！技术派团队出品。', 2, 1, '2', '{}', 0, '2023-01-13 19:15:57', '2023-04-15 16:04:49');

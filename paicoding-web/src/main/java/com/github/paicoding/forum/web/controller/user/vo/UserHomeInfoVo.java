@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @program: tech-pai
  * @description: 用户个人信息页面所需信息
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-07-06
  */
 

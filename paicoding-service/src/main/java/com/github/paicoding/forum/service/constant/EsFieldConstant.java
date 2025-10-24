@@ -4,7 +4,7 @@ package com.github.paicoding.forum.service.constant;
  * ES 过滤字段常量
  *
  * @ClassName: EsFieldConstant
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class EsFieldConstant {

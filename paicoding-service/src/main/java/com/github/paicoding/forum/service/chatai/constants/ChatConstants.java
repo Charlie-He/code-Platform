@@ -5,7 +5,7 @@ import com.github.paicoding.forum.api.model.enums.ai.AISourceEnum;
 import java.time.LocalDate;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public final class ChatConstants {
@@ -47,7 +47,7 @@ public final class ChatConstants {
     public static final long QAS_TIME_INTERVAL = 20_000;
 
 
-    public static final String CHAT_REPLY_RECOMMEND = "请注册技术派之后再来体验吧，技术派官网： \n http://www.xuyifei.site";
+    public static final String CHAT_REPLY_RECOMMEND = "请注册技术派之后再来体验吧，技术派官网： \n http://www.heshaowei.site";
     public static final String CHAT_REPLY_BEGIN = "让我们开始体验ChatGPT的魅力吧~";
     public static final String CHAT_REPLY_OVER = "体验结束，让我们下次再见吧~";
     public static final String CHAT_REPLY_CNT_OVER = "次数使用完了哦，勾搭一下群主，多申请点使用次数吧~\n微信：xyf857998989";

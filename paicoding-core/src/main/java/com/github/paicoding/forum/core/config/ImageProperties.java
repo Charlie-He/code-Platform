@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * 图片配置文件
  *
- * @author XuYifei
+ * @author heshaowei
  * @since 2024-07-12
  */
 @Setter

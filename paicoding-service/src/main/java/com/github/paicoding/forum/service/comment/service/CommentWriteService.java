@@ -5,7 +5,7 @@ import com.github.paicoding.forum.api.model.vo.comment.CommentSaveReq;
 /**
  * 评论Service接口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface CommentWriteService {

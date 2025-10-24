@@ -3,7 +3,7 @@ package com.github.paicoding.forum.api.model.enums;
 /**
  * websocket 连接 状态
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public enum WsConnectStateEnum {

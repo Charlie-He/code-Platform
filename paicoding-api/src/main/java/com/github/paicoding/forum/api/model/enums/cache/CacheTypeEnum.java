@@ -3,7 +3,7 @@ package com.github.paicoding.forum.api.model.enums.cache;
 /**
  * @program: pai_coding
  * @description: 标记使用redis的什么数据类型
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-25
  */
 

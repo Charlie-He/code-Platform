@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  *
  * DO 对应数据库实体类
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

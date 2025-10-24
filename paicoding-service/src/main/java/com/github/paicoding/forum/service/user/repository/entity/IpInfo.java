@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * ip信息
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

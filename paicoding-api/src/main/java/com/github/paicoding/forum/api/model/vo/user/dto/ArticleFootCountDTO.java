@@ -5,7 +5,6 @@ import lombok.Data;
 /**
  * 文章足迹计数
  *
- * @author XuYifei
  * @date 2024-07-12
  */
 @Data

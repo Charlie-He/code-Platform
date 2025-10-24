@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Banner后台接口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Service

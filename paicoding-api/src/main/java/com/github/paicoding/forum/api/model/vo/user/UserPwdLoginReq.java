@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * 基于用户名密码登录的相关请求信息
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 /**
  * 文章推荐
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

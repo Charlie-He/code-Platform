@@ -32,7 +32,7 @@ import java.util.function.Supplier;
 /**
  * 异步工具类
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024/7/8
  */
 @Slf4j
@@ -225,6 +225,7 @@ public class AsyncUtil {
         public CompletableFutureBridge allExecuted() {
             if (!CollectionUtils.isEmpty(list)) {
                 CompletableFuture.allOf(ArrayUtil.toArray(list, CompletableFuture.class)).join();
+
             }
             this.markOver = true;
             endRecord(this.taskName);

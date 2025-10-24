@@ -36,7 +36,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * chatgpt的交互封装集成
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

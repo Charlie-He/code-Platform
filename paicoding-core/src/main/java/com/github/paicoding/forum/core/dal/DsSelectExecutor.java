@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 /**
  * 手动指定数据源的用法
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class DsSelectExecutor {

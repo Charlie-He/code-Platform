@@ -9,7 +9,7 @@ import org.springframework.messaging.support.ChannelInterceptor;
 /**
  * 权限拦截器，消息广播给用户的场景
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

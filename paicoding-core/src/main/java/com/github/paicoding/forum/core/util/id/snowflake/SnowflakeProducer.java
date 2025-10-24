@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 基于雪花算法计算的id生成器
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

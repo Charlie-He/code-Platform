@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
 /**
  * 专栏后台接口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Service

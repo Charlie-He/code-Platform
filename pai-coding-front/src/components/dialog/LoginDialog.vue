@@ -5,7 +5,7 @@
     <el-container>
       <el-main>
         <el-container>
-          <el-container>
+          <el-container v-if="isLogin">
             <el-main>
               <el-form
                 ref="formRef"
@@ -44,7 +44,7 @@
                   <el-input v-model="dynamicValidateForm.password" placeholder="请输入密码"/>
                 </el-form-item>
                 <el-form-item class="center-content">
-                  <el-button type="primary" @click="submitForm(formRef)">提交</el-button>
+                  <el-button type="primary" @click="login(formRef)">提交</el-button>
                   <el-button @click="resetForm(formRef)">清空</el-button>
                 </el-form-item>
               </el-form>
@@ -52,9 +52,60 @@
             <el-footer>
               <div class="other-login-box">
                 <div class="oauth-box">
-                  <span>其他登录——敬请期待</span>
+                  <span>没有账号?</span>
+                  <a class="bold-span underline cursor-pointer link-color" @click="jumpToRegister">去注册</a>
                 </div>
               </div>
+            </el-footer>
+          </el-container>
+          <el-container v-else>
+            <el-main>
+              <el-form
+                  ref="formRef"
+                  style="max-width: 325px"
+                  :model="dynamicValidateForm"
+                  label-width="auto"
+                  class="demo-dynamic"
+              >
+                <el-form-item style="margin: 0">
+                  <span class="bold-span mb-4">新用户注册</span>
+                </el-form-item>
+                <el-form-item
+                    prop="username"
+                    label="用户名"
+                    :rules="[
+                      {
+                        required: true,
+                        message: '用户名不能为空',
+                        trigger: 'blur',
+                      },
+                    ]"
+                >
+                  <el-input v-model="dynamicValidateForm.username" placeholder="请输入用户名"/>
+                </el-form-item>
+                <el-form-item
+                    prop="password"
+                    label="密码"
+                    :rules="[
+                        {
+                          required: true,
+                          message: '密码不能为空',
+                          trigger: 'blur',
+                        },
+                      ]"
+                >
+                  <el-input v-model="dynamicValidateForm.password" placeholder="请输入密码"/>
+                </el-form-item>
+                <el-form-item class="center-content">
+                  <el-button type="primary" @click="register(formRef)">提交</el-button>
+                  <el-button @click="resetForm(formRef)">清空</el-button>
+                </el-form-item>
+              </el-form>
+            </el-main>
+            <el-footer>
+                <div class="oauth-box">
+                  <a class="bold-span underline cursor-pointer link-color" @click="jumpToLogin">去登录</a>
+                </div>
             </el-footer>
           </el-container>
           <el-container>
@@ -62,7 +113,7 @@
               <div class="tabpane-container" style="display: flex; flex-direction: column; justify-content: space-between; align-content: center">
                 <span class="wx-login-span-info center-content">微信扫码/长按识别登录</span>
                 <div class="first center-content">
-                  <img class="signin-qrcode" width="150px" src="https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/%E5%85%AC%E4%BC%97%E5%8F%B7qrcode.jpg" />
+                  <img class="signin-qrcode" width="150px" src="https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/%E5%85%AC%E4%BC%97%E5%8F%B7qrcode.jpg" />
                 </div>
 
                 <div class="explain center-content">
@@ -104,20 +155,28 @@ import { reactive, ref, watch } from 'vue'
 import type { FormInstance } from 'element-plus'
 import { doGet, doPost, mockLogin2XML, mockLoginXML } from '@/http/BackendRequests'
 import type { CommonResponse, GlobalResponse } from '@/http/ResponseTypes/CommonResponseType'
-import { BASE_URL, LOGIN_USER_NAME_URL } from '@/http/URL'
+import {BASE_URL, LOGIN_USER_NAME_URL, REGISTER_USER_NAME_URL} from '@/http/URL'
 import { getCookie, messageTip, refreshPage, setAuthToken } from '@/util/utils'
 import { MESSAGE_TYPE } from '@/constants/MessageTipEnumConstant'
 import { COOKIE_DEVICE_ID } from '@/constants/CookieConstants'
 import { useGlobalStore } from '@/stores/global'
 const globalStore = useGlobalStore()
 const global = globalStore.global
-
+const isLogin=ref(true)
 const props = defineProps<{
   clicked: boolean,
 }>()
 
 const loginModal = ref(false)
 let init = false
+
+//去注册跳转
+const jumpToRegister=()=>{
+  isLogin.value=false;
+}
+const jumpToLogin=()=>{
+  isLogin.value=true;
+}
 
 
 watch(() => props.clicked, () => {
@@ -140,7 +199,7 @@ const dynamicValidateForm = reactive<{
 })
 
 
-const submitForm = (formEl: FormInstance | undefined) => {
+const login = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.validate((valid) => {
     if (valid) {
@@ -153,12 +212,39 @@ const submitForm = (formEl: FormInstance | undefined) => {
           if(response.data.status.code === 0){
             messageTip("登录成功", MESSAGE_TYPE.SUCCESS)
             setAuthToken(response.data.result.token)
-            console.log(response.data)
             refreshPage()
-          }})
+          }else{
+            messageTip(response.data.status.msg, MESSAGE_TYPE.ERROR)
+          }
+        })
         .catch((error) => {
           console.error(error)
         })
+    } else {
+      messageTip("请按要求填写用户名密码", MESSAGE_TYPE.ERROR)
+    }
+  })
+}
+const register = (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  formEl.validate((valid) => {
+    if (valid) {
+      console.log(dynamicValidateForm)
+      doPost<CommonResponse>(REGISTER_USER_NAME_URL, {
+        username: dynamicValidateForm.username,
+        password: dynamicValidateForm.password
+      })
+          .then((response) => {
+            if(response.data.status.code === 0){
+              messageTip("注册成功", MESSAGE_TYPE.SUCCESS)
+              jumpToLogin();
+            }else{
+              messageTip(response.data.status.msg, MESSAGE_TYPE.ERROR)
+            }
+          })
+          .catch((error) => {
+            console.error(error)
+          })
     } else {
       messageTip("请按要求填写用户名密码", MESSAGE_TYPE.ERROR)
     }

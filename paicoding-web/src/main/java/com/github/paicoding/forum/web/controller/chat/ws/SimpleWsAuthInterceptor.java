@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * v1. 简单版本聊天： 长连接的登录校验拦截器
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

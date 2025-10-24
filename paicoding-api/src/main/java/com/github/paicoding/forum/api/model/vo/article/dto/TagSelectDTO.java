@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * 通用标签选择
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

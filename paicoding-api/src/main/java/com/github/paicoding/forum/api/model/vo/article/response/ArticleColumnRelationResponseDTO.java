@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 /**
  * @program: pai_coding
  * @description: 给定文章id查询对应专栏信息的响应对象
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-24
  */
 

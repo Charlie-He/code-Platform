@@ -133,14 +133,14 @@ VALUES(1, 'a7cb7228-0f85-4dd5-845c-7c5df3746e92', 'admin', 'df3a4143b663a086d1c0
 
 INSERT INTO user_info
 (id, user_id, user_name, photo, `position`, company, profile, extend, deleted)
-VALUES(1, 1, '管理员', 'https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/avatar/B0FBE96A0309EF08D329E782434894E9.jpg', 'java', 'xm', '码农', '', 0);
+VALUES(1, 1, '管理员', 'https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/avatar/B0FBE96A0309EF08D329E782434894E9.jpg', 'java', 'xm', '码农', '', 0);
 
 
 
 -- 准备数据
 INSERT INTO column_info
 (id, column_name, user_id, introduction, cover, state, publish_time, create_time, update_time)
-VALUES(1, '小灰飞的专栏', 1, '这里是小灰飞的踩坑记录，欢迎关注', 'https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/cover/column-avatar1.png', 1, '2022-09-15 01:00:00', '2022-09-15 01:00:00', '2022-09-15 01:00:00');
+VALUES(1, '小灰飞的专栏', 1, '这里是小灰飞的踩坑记录，欢迎关注', 'https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/cover/column-avatar1.png', 1, '2022-09-15 01:00:00', '2022-09-15 01:00:00', '2022-09-15 01:00:00');
 
 
 -- 添加专栏文章
@@ -294,7 +294,7 @@ VALUES(101, 2, '
 
 JVM 全称是 Java Virtual Machine，中文译名Java虚拟机。JVM 本质上是一个运行在计算机上的程序，他的职责是运行Java字节码文件。
 Java源代码执行流程如下：
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/378a97d805347c7a94f4e8955d7b933a.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/378a97d805347c7a94f4e8955d7b933a.png)
 分为三个步骤：
 1、编写Java源代码文件。
 2、使用Java编译器（javac命令）将源代码编译成Java字节码文件。
@@ -310,7 +310,7 @@ Java源代码执行流程如下：
 
 对字节码文件中的指令，实时的解释成机器码，让计算机执行。
 字节码文件中包含了字节码指令，计算器无法直接执行，Java虚拟机会将字节码文件中的字节码指令实时地解释成机器码，机器码是计算机可以运行的指令。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/2a82bb72c6868bc1a6af3c11257b946c.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/2a82bb72c6868bc1a6af3c11257b946c.png)
 
 ### 1.2.2 内存管理
 
@@ -327,17 +327,17 @@ Java虚拟机会帮助程序员为对象分配内存，同时将不用的对象�
 
 Java语言如果不做任何的优化，性能其实是不如C和C++语言的。主要原因是：
 在程序运行过程中，Java虚拟机需要将字节码指令实时地解释成计算机能识别的机器码，这个过程在运行时可能会反复地执行，所以效率较低。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/2a82bb72c6868bc1a6af3c11257b946c.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/2a82bb72c6868bc1a6af3c11257b946c.png)
 
 C和C++语言在执行过程中，只需要将源代码编译成可执行文件，就包含了计算机能识别的机器码，无需在运行过程中再实时地解释，所以性能较高。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/56579da5307f70965964599e82251a7c.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/56579da5307f70965964599e82251a7c.png)
 
 Java为什么要选择一条执行效率比较低的方式呢？主要是为了实现跨平台的特性。Java的字节码指令，如果希望在不同平台（操作系统+硬件架构），比如在windows或者linux上运行。可以使用同一份字节码指令，交给windows和linux上的Java虚拟机进行解释，这样就可以获得不同平台上的机器码了。这样就实现了Write Once，Run Anywhere 编写一次，到处运行 的目标。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/a14f500a7d347cc06544bbf98f1c5330.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/a14f500a7d347cc06544bbf98f1c5330.png)
 
 但是C/C++语言，如果要让程序在不同平台上运行，就需要将一份源代码在不同平台上分别进行编译，相对来说比较麻烦。
 再回到即时编译，在JDK1.1的版本中就推出了即时编译去优化对应的性能。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/b21254144e39d8a32784b6c6b4bb8f8d.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/b21254144e39d8a32784b6c6b4bb8f8d.png)
 
 虚拟机在运行过程中如果发现某一个方法甚至是循环是热点代码（被非常高频调用），即时编译器会优化这段代码并将优化后的机器码保存在内存中，如果第二次再去执行这段代码。Java虚拟机会将机器码从内存中取出来直接进行调用。这样节省了一次解释的步骤，同时执行的是优化后的代码，效率较高。
 Java通过即时编译器获得了接近C/C++语言的性能，在某些特定的场景下甚至可以实现超越。
@@ -391,14 +391,14 @@ INSERT INTO article_detail
 VALUES(102, 2, '## 2 Java虚拟机的组成
 
 Java虚拟机主要分为以下几个组成部分：
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/e2e15cec89b785c02b8d465e722aab7c.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/e2e15cec89b785c02b8d465e722aab7c.png)
 
 
 - 类加载子系统：核心组件类加载器，负责将字节码文件中的内容加载到内存中。
 - 运行时数据区：JVM管理的内存，创建出来的对象、类的信息等等内容都会放在这块区域中。
 - 执行引擎：包含了即时编译器、解释器、垃圾回收器，执行引擎使用解释器将字节码指令解释成机器码，使用即时编译器优化性能，使用垃圾回收器回收不再使用的对象。
 - 本地接口：调用本地使用C/C++编译好的方法，本地方法在Java中声明时，都会带上native关键字，如下图所示。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/8bf944342c3180567a595506c6785602.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/8bf944342c3180567a595506c6785602.png)
 
 
 ## 3 字节码文件的组成
@@ -407,11 +407,11 @@ Java虚拟机主要分为以下几个组成部分：
 
 字节码文件中保存了源代码编译之后的内容，以二进制的方式存储，无法直接用记事本打开阅读。
 通过NotePad++使用十六进制插件查看class文件：
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/7e119baa0eaf0bedced10d76323f7784.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/7e119baa0eaf0bedced10d76323f7784.png)
 
 无法解读出文件里包含的内容，推荐使用 jclasslib工具查看字节码文件。 Github地址： https://github.com/ingokegel/jclasslib
 
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/717347ff910bd7744087566ebeec4465.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/717347ff910bd7744087566ebeec4465.png)
 
 
 ### 3.2 字节码文件的组成
@@ -427,14 +427,14 @@ Java虚拟机主要分为以下几个组成部分：
 #### 3.2.1 基本信息
 
 基本信息包含了jclasslib中能看到的两块内容：
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/63b3035c8c2cd03be9fe696066d9a9e2.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/63b3035c8c2cd03be9fe696066d9a9e2.png)
 
 
 ##### Magic魔数
 
 每个Java字节码文件的前四个字节是固定的，用16进制表示就是0xcafebabe。文件是无法通过文件扩展名来确定文件类型的，文件扩展名可以随意修改不影响文件的内容。软件会使用文件的头几个字节（文件头）去校验文件的类型，如果软件不支持该种类型就会出错。
 比如常见的文件格式校验方式如下：
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/2096d15baba88e02c2606fda429ce715.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/2096d15baba88e02c2606fda429ce715.png)
 
 Java字节码文件中，将文件头称为magic魔数。Java虚拟机会校验字节码文件的前四个字节是不是0xcafebabe，如果不是，该字节码文件就无法正常使用，Java虚拟机会抛出对应的错误。
 
@@ -442,7 +442,7 @@ Java字节码文件中，将文件头称为magic魔数。Java虚拟机会校验�
 
 主副版本号指的是编译字节码文件时使用的JDK版本号，主版本号用来标识大版本号，JDK1.0-1.1使用了45.0-45.3，JDK1.2是46之后每升级一个大版本就加1；副版本号是当主版本号相同时作为区分不同版本的标识，一般只需要关心主版本号。
 1.2之后大版本号计算方法就是 : 主版本号 – 44，比如主版本号52就是JDK8。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/f78bd566b2c88815ab19253e560e2817.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/f78bd566b2c88815ab19253e560e2817.png)
 
 版本号的作用主要是判断当前字节码的版本和运行时的JDK是否兼容。如果使用较低版本的JDK去运行较高版本JDK的字节码文件，无法使用会显示错误
 有两种方案：
@@ -452,13 +452,13 @@ Java字节码文件中，将文件头称为magic魔数。Java虚拟机会校验�
 ##### 其他基础信息
 
 其他基础信息包括访问标识、类和接口索引，如下：
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/88da89e7709e87bd76b7540e0030251a.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/88da89e7709e87bd76b7540e0030251a.png)
 
 
 #### 3.2.2 常量池
 
 字节码文件中常量池的作用：避免相同的内容重复定义，节省空间。如下图，常量池中定义了一个字符串，字符串的字面量值为123。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/2914192760d83b9d86f6f1bf9a9d79ad.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/2914192760d83b9d86f6f1bf9a9d79ad.png)
 
 比如在代码中，编写了两个相同的字符串“我爱北京天安门”，字节码文件甚至将来在内存中使用时其实只需要保存一份，此时就可以将这个字符串以及字符串里边包含的字面量，放入常量池中以达到节省空间的作用。
 
@@ -469,20 +469,20 @@ String str2 = "我爱北京天安门";
 
 常量池中的数据都有一个编号，编号从1开始。比如“我爱北京天安门”这个字符串，在常量池中的编号就是7。在字段或者字节码指令中通过编号7可以快速的找到这个字符串。
 字节码指令中通过编号引用到常量池的过程称之为符号引用。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/182824136eec5204c355730a80edefb5.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/182824136eec5204c355730a80edefb5.png)
 
 
 #### 3.2.3 字段
 
 字段中存放的是当前类或接口声明的字段信息。
 如下图中，定义了两个字段a1和a2，这两个字段就会出现在字段这部分内容中。同时还包含字段的名字、描述符（字段的类型）、访问标识（public/private static final等）。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/afe53c01bc789b38da5dfd5605863860.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/afe53c01bc789b38da5dfd5605863860.png)
 
 
 #### 3.2.4 方法
 
 字节码中的方法区域是存放**字节码指令**的核心位置，字节码指令的内容存放在方法的Code属性中。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/fba1504737081e51f24beb41f267579e.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/fba1504737081e51f24beb41f267579e.png)
 
 通过分析方法的字节码指令，可以清楚地了解一个方法到底是如何执行的。先来看如下案例：
 
@@ -492,38 +492,38 @@ int j = i + 1;
 ```
 
 这段代码编译成字节码指令之后是如下内容：
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/000d65dd9aef2b3af9e1124a5de5c3fb.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/000d65dd9aef2b3af9e1124a5de5c3fb.png)
 
 要理解这段字节码指令是如何执行的，我们需要先理解两块内存区域：操作数栈和局部变量表。
 **操作数栈**是用来存放临时数据的内容，是一个栈式的结构，先进后出。
 **局部变量表**是存放方法中的局部变量，包含方法的参数、方法中定义的局部变量，在编译期就已经可以确定方法有多少个局部变量。
 1、iconst_0，将常量0放入操作数栈。此时栈上只有0。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/eefd483b3fb4c0dd4c82d163bb1551c1.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/eefd483b3fb4c0dd4c82d163bb1551c1.png)
 
 2、istore_1会从操作数栈中，将栈顶的元素弹出来，此时0会被弹出，放入局部变量表的1号位置。局部变量表中的1号位置，在编译时就已经确定是局部变量i使用的位置。完成了对局部变量i的赋值操作。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/a44f6aa0a6c6b863c9e7c5cdb5a96584.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/a44f6aa0a6c6b863c9e7c5cdb5a96584.png)
 
 3、iload_1将局部变量表1号位置的数据放入操作数栈中，此时栈中会放入0。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/778dd2dd513630fb7ec3e68fb4f08b2a.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/778dd2dd513630fb7ec3e68fb4f08b2a.png)
 
 4、iconst_1会将常量1放入操作数栈中。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/0fb353711da21cd4122ab18aa2dc463b.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/0fb353711da21cd4122ab18aa2dc463b.png)
 
 5、iadd会将操作数栈顶部的两个数据相加，现在操作数栈上有两个数0和1，相加之后结果为1放入操作数栈中，此时栈上只有一个数也就是相加的结果1。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/78bc101711b04573516cbb74b759b2c2.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/78bc101711b04573516cbb74b759b2c2.png)
 
 6、istore_2从操作数栈中将1弹出，并放入局部变量表的2号位置，2号位置是j在使用。完成了对局部变量j的赋值操作。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/f4eb3313b48d00a118adb3cfcad64386.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/f4eb3313b48d00a118adb3cfcad64386.png)
 
 7、return语句执行，方法结束并返回。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/d941f189636fd844212be8429a733ccf.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/d941f189636fd844212be8429a733ccf.png)
 
 同理，同学们可以自行分析下i++和++i的字节码指令执行的步骤。
 i++的字节码指令如下，其中iinc 1 by 1指令指的是将局部变量表1号位置增加1，其实就实现了i++的操作。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/3eabbe2fb68d584a147916714d4a9b33.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/3eabbe2fb68d584a147916714d4a9b33.png)
 
 而++i只是对两个字节码指令的顺序进行了更改：
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/24d6938804c52a1928800229d792cbcd.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/24d6938804c52a1928800229d792cbcd.png)
 
 
 ##### 面试题：
@@ -535,7 +535,7 @@ i++的字节码指令如下，其中iinc 1 by 1指令指的是将局部变量表
 ####  2.2.2.5 属性
 
 属性主要指的是类的属性，比如源码的文件名、内部类的列表等。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/da80d7543580cc80f7952cf6708e507f.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/da80d7543580cc80f7952cf6708e507f.png)
 
 
 ### 2.2.3 玩转字节码常用工具
@@ -551,7 +551,7 @@ jclasslib也有Idea插件版本，建议开发时使用Idea插件版本，可以
 安装方式：
 1、打开idea的插件页面，搜索jclasslib
 2、选中要查看的源代码文件，选择 视图(View) - Show Bytecode With Jclasslib
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/1310c6b7b98e7e43101f586476d693ab.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/1310c6b7b98e7e43101f586476d693ab.png)
 
 右侧会展示对应源代码编译后的字节码文件内容：
 
@@ -562,12 +562,12 @@ tips:
 #### 2.2.3.3 Arthas
 
 Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用 load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，大大提升线上问题排查效率。 官网：https://arthas.aliyun.com/doc/ Arthas的功能列表如下：
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/9d85b83fceb86113b11dd56fd439fa76.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/9d85b83fceb86113b11dd56fd439fa76.png)
 
 **安装方法：**
 1、使用java -jar arthas-boot.jar  启动程序。
 2、输入需要Arthas监控的进程id。
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/0725e762274911d14b5a5de407a496eb.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/0725e762274911d14b5a5de407a496eb.png)
 
 4、输入命令即可使用。
 **dump**

@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 用户关系mapper接口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface UserRelationMapper extends BaseMapper<UserRelationDO> {

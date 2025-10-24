@@ -17,9 +17,6 @@ import java.util.List;
 
 /**
  * 排行榜
- *
- * @author XuYifei
- * @date 2024-07-12
  */
 @RestController
 public class RankController {

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * @program: pai_coding
  * @description: 动态决定实例化哪一个实现
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-21
  */
 

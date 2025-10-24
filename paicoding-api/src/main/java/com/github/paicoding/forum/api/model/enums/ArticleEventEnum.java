@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 文章操作枚举
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Getter

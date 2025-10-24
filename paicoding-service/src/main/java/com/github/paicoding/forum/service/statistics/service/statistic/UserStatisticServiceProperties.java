@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @program: pai_coding
  * @description: 控制实例化的在线人数统计信息配置
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-21
  */
 

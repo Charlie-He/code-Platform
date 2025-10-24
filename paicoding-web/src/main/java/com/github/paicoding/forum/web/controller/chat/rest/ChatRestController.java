@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * STOMP协议的ChatGpt聊天通讯实现方式
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024/07/11
  */
 @Slf4j
@@ -48,6 +48,5 @@ public class ChatRestController {
 //    @SendTo("/chat/rsp")
     public void chat(String msg, @DestinationVariable("session") String session, @Header("simpSessionAttributes") Map<String, Object> attrs) {
         processMessage.processMessage(msg);
-
     }
 }

@@ -3,7 +3,7 @@ package com.github.paicoding.forum.core.util;
 import org.springframework.util.Assert;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class EnvUtil {

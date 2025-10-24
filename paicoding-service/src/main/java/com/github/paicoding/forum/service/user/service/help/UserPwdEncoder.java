@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * 密码加密器，后续接入SpringSecurity之后，可以使用 PasswordEncoder 进行替换
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Component

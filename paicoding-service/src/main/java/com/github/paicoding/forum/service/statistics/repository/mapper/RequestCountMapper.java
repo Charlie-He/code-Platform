@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 请求计数mapper接口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface RequestCountMapper extends BaseMapper<RequestCountDO> {

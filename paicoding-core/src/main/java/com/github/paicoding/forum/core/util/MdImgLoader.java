@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * markdown文本中的图片识别
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class MdImgLoader {

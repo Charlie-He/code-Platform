@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * 基于验证码、用户名密码的登录方式
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Service
@@ -127,72 +127,42 @@ public class LoginServiceImpl implements LoginService {
      * @return
      */
     @Override
-    public String registerByUserPwd(UserPwdLoginReq loginReq) {
-        // 1. 前置校验
-        registerPreCheck(loginReq);
-
-        // 2. 判断当前用户是否登录，若已经登录，则直接走绑定流程
-        Long userId = ReqInfoContext.getReqInfo().getUserId();
-        loginReq.setUserId(userId);
-        if (userId != null) {
-            // 2.1 如果用户已经登录，则走绑定用户信息流程
-            userService.bindUserInfo(loginReq);
-            return ReqInfoContext.getReqInfo().getSession();
-        }
-
-
-        // 3. 尝试使用用户名进行登录，若成功，则依然走绑定流程
-        UserDO user = userDao.getUserByUserName(loginReq.getUsername());
-        if (user != null) {
-            if (!userPwdEncoder.match(loginReq.getPassword(), user.getPassword())) {
-                // 3.1 用户名已经存在
-                throw ExceptionUtil.of(StatusEnum.USER_LOGIN_NAME_REPEAT, loginReq.getUsername());
-            }
-
-            // 3.2 用户存在，尝试走绑定流程
-            userId = user.getId();
-            loginReq.setUserId(userId);
-            userAiService.initOrUpdateAiInfo(loginReq);
-        } else {
-            //4. 走用户注册流程
-            userId = registerService.registerByUserNameAndPassword(loginReq);
-        }
-        ReqInfoContext.getReqInfo().setUserId(userId);
-        return userSessionHelper.genToken(userId);
+    public void registerByUserPwd(UserPwdLoginReq loginReq) {
+            registerService.registerByUserNameAndPassword(loginReq);
     }
 
 
-    /**
-     * 注册前置校验
-     *
-     * @param loginReq
-     */
-    private void registerPreCheck(UserPwdLoginReq loginReq) {
-        if (StringUtils.isBlank(loginReq.getUsername()) || StringUtils.isBlank(loginReq.getPassword())) {
-            throw ExceptionUtil.of(StatusEnum.USER_PWD_ERROR);
-        }
-
-        String starNumber = loginReq.getStarNumber();
-        // 若传了星球信息，首先进行校验
-        if (StringUtils.isNotBlank(starNumber)) {
-            if (Boolean.FALSE.equals(starNumberHelper.checkStarNumber(starNumber))) {
-                // 星球编号校验不通过，直接抛异常
-                throw ExceptionUtil.of(StatusEnum.USER_STAR_NOT_EXISTS, "星球编号=" + starNumber);
-            }
-
-            UserAiDO userAi = userAiDao.getByStarNumber(starNumber);
-
-            // 如果星球编号已经被绑定了
-            if (userAi != null) {
-                // 判断星球是否已经被绑定了
-                throw ExceptionUtil.of(StatusEnum.USER_STAR_REPEAT, starNumber);
-            }
-        }
-
-        String invitationCode = loginReq.getInvitationCode();
-        if (StringUtils.isNotBlank(invitationCode) && userAiDao.getByInviteCode(invitationCode) == null) {
-            // 填写的邀请码不对, 找不到对应的用户
-            throw ExceptionUtil.of(StatusEnum.UNEXPECT_ERROR, "非法的邀请码【" + starNumber + "】");
-        }
-    }
+//    /**
+//     * 注册前置校验
+//     *
+//     * @param loginReq
+//     */
+//    private void registerPreCheck(UserPwdLoginReq loginReq) {
+//        if (StringUtils.isBlank(loginReq.getUsername()) || StringUtils.isBlank(loginReq.getPassword())) {
+//            throw ExceptionUtil.of(StatusEnum.USER_PWD_ERROR);
+//        }
+//
+//        String starNumber = loginReq.getStarNumber();
+//        // 若传了星球信息，首先进行校验
+//        if (StringUtils.isNotBlank(starNumber)) {
+//            if (Boolean.FALSE.equals(starNumberHelper.checkStarNumber(starNumber))) {
+//                // 星球编号校验不通过，直接抛异常
+//                throw ExceptionUtil.of(StatusEnum.USER_STAR_NOT_EXISTS, "星球编号=" + starNumber);
+//            }
+//
+//            UserAiDO userAi = userAiDao.getByStarNumber(starNumber);
+//
+//            // 如果星球编号已经被绑定了
+//            if (userAi != null) {
+//                // 判断星球是否已经被绑定了
+//                throw ExceptionUtil.of(StatusEnum.USER_STAR_REPEAT, starNumber);
+//            }
+//        }
+//
+//        String invitationCode = loginReq.getInvitationCode();
+//        if (StringUtils.isNotBlank(invitationCode) && userAiDao.getByInviteCode(invitationCode) == null) {
+//            // 填写的邀请码不对, 找不到对应的用户
+//            throw ExceptionUtil.of(StatusEnum.UNEXPECT_ERROR, "非法的邀请码【" + starNumber + "】");
+//        }
+//    }
 }

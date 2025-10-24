@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * es配置类
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  **/
 @Slf4j

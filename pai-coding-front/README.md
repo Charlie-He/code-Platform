@@ -4,7 +4,7 @@
 
 ## 配套服务
 
-1. **前后端分离网址**：[https://www.xuyifei.site](http://www.xuyifei.site)
+1. **前后端分离网址**：[https://www.heshaowei.site](http://www.heshaowei.site)
 2. **技术派管理端源码**：[paicoding-admin](https://github.com/itwanger/paicoding-admin)
 
 ## 项目介绍
@@ -13,24 +13,24 @@
 
 ### 前台用Vue3重构后的效果
 
-可以直接浏览本人的[上线网站](https://www.xuyifei.site)（求各位不要进行攻击，友好交流，本人还只是个学森）
+可以直接浏览本人的[上线网站](https://www.heshaowei.site)（求各位不要进行攻击，友好交流，本人还只是个学森）
 
 部分效果如下：
 
 - 首页
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-1.png)
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-2.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-1.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-2.png)
 - 教程（专栏）页
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-3.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-3.png)
 - 大模型对话
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-4.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-4.png)
 - 更新计划
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-5.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-5.png)
 
 ### 代码展示
 
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-front-code-1.png)
-![](https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-front-code-2.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-front-code-1.png)
+![](https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/commons/tech-pai-front-code-2.png)
 
 
 ## 项目结构

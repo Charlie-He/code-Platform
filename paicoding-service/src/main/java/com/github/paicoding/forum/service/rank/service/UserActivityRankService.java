@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 用户活跃排行榜
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface UserActivityRankService {

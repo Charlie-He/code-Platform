@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 文章列表
  *
- * @author XuYifei
+ * @author heshaowei
  */
 @RequestMapping(path = "article/api/list")
 @RestController

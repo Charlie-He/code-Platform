@@ -15,7 +15,7 @@ import java.util.function.BiConsumer;
 /**
  * 技术派价值一个亿的AI
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Service

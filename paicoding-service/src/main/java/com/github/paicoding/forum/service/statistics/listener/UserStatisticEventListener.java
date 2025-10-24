@@ -19,7 +19,7 @@ import jakarta.annotation.Resource;
 /**
  * 用户活跃相关的消息监听器
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Component

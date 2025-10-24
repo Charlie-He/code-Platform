@@ -21,7 +21,7 @@ import java.util.Objects;
 /**
  * 使用jwt来存储用户token，则不需要后端来存储session了
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

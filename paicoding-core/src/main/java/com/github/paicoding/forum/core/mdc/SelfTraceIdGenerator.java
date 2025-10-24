@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * <p>
  * 生成规则参考 <a href="https://help.aliyun.com/document_detail/151840.html"/>
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Slf4j

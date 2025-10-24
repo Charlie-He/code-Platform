@@ -11,7 +11,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 /**
  * @program: pai_coding
  * @description: RedisTemplate配置
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-31
  */
 

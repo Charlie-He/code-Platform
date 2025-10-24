@@ -8,7 +8,7 @@ import com.github.paicoding.forum.core.util.id.snowflake.SnowflakeProducer;
 import static com.github.paicoding.forum.core.util.CompressUtil.int2str;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class IdUtil {

@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
 /**
  * @program: pai_coding
  * @description: rabbitmq消费者
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-30
  */
 

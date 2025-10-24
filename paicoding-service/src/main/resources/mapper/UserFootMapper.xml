@@ -18,7 +18,6 @@
 
     </select>
 
-
     <select id="countArticleByUserId"
             resultType="com.github.paicoding.forum.api.model.vo.user.dto.ArticleFootCountDTO">
         SELECT

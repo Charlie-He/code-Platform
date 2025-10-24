@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * @program: pai_coding
  * @description: 文章分类的特殊常量
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-21
  */
 

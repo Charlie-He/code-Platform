@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 /**
  * 首页推荐相关
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Component

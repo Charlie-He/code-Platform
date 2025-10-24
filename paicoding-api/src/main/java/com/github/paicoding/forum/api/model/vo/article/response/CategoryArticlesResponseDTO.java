@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @program: pai_coding
  * @description: 指定分类下的article响应DTO
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-21
  */
 

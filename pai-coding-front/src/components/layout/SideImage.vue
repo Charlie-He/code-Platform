@@ -6,7 +6,7 @@
       <template #default>
         <el-image
           style="width: 100%;"
-          src="https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/commons/WechatARCode.png"
+          src="https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/commons/WechatARCode.png"
           fit="cover"
         ></el-image>
 
@@ -14,7 +14,7 @@
 
         <el-image
           style="width: 100%;"
-          src="https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/commons/QQARCode.png"
+          src="https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/commons/QQARCode.png"
           fit="cover"
         ></el-image>
       </template>

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @program: pai_coding
  * @description: 测试/无业务的controller
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-21
  */
 

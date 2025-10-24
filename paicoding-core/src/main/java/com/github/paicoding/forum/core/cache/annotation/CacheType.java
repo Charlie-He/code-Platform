@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author xuyifei
+ * @author heshaowei
  * 标记缓存类型
  */
 @Target(ElementType.TYPE)

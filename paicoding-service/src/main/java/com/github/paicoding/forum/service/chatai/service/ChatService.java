@@ -6,7 +6,7 @@ import com.github.paicoding.forum.api.model.vo.chat.ChatRecordsVo;
 import java.util.function.Consumer;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface ChatService {

@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * 文章标签映mapper接口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Repository

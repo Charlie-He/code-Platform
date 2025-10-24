@@ -20,7 +20,7 @@ import java.util.List;
  *
  * todo 知识点： 请求参数的封装，避免输入流读取一次就消耗了
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class BodyReaderHttpServletRequestWrapper extends HttpServletRequestWrapper {

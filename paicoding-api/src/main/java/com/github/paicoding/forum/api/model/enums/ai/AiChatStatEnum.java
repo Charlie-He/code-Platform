@@ -1,7 +1,7 @@
 package com.github.paicoding.forum.api.model.enums.ai;
 
 /**
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public enum AiChatStatEnum {

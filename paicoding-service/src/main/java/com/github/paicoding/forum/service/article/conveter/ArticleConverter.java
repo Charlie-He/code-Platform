@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * 文章转换
  * <p>
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public class ArticleConverter {

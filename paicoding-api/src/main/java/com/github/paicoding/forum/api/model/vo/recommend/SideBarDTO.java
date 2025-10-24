@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 侧边推广信息
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

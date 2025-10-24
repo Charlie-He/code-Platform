@@ -7,7 +7,7 @@ import lombok.*;
 /**
  * @program: pai_coding
  * @description: mq生产和消费的事件
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-31
  */
 

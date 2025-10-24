@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 /**
  * 评论表
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @Data

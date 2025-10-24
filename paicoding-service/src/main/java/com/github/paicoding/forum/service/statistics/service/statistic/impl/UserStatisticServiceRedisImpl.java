@@ -6,7 +6,7 @@ import com.github.paicoding.forum.service.statistics.service.statistic.UserStati
 /**
  * @program: pai_coding
  * @description:
- * @author: XuYifei
+ * @author: heshaowei
  * @create: 2024-10-21
  */
 public class UserStatisticServiceRedisImpl implements UserStatisticService {

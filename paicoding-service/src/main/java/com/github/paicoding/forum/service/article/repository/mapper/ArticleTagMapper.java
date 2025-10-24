@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 文章标签映mapper接口
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 public interface ArticleTagMapper extends BaseMapper<ArticleTagDO> {

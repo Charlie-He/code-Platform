@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Banner后台
  *
- * @author XuYifei
+ * @author heshaowei
  * @date 2024-07-12
  */
 @RestController

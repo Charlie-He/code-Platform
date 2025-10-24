@@ -15,7 +15,7 @@ import type { SideBarItem } from '@/http/ResponseTypes/SideBarItemType'
  *          "freeEndTime": "1679277600000",
  *          "author": "1",
  *          "authorName": "管理员",
- *          "authorAvatar": "https://xuyifei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/pexels-james-wheeler-1574181.jpg",
+ *          "authorAvatar": "https://heshaowei-oss.oss-cn-beijing.aliyuncs.com/tech-pai/images/pexels-james-wheeler-1574181.jpg",
  *          "authorProfile": "码农",
  *          "count": {
  *            "praiseCount": 0,
